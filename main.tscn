@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dm87lq54y8o4d"]
+
+[ext_resource type="Script" uid="uid://dqmhgnd04hpni" path="res://CameraController.cs" id="1_ig7tw"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_qnpof"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7dm0k"]
+albedo_color = Color(1, 0.16470589, 1, 1)
+
+[node name="Node3D" type="Node3D" unique_id=1658306331]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1724202613]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
+
+[node name="Node" type="Node" parent="Camera3D" unique_id=343361632]
+script = ExtResource("1_ig7tw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=653191799]
+mesh = SubResource("CylinderMesh_qnpof")
+surface_material_override/0 = SubResource("StandardMaterial3D_7dm0k")
