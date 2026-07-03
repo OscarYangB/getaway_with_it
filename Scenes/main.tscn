@@ -51,18 +51,23 @@ metadata/_custom_type_script = "uid://dk8hk62n8ad4h"
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7dm0k"]
 albedo_color = Color(1, 0.16470589, 1, 1)
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_qnpof"]
+viewport_path = NodePath("computer_screen/SubViewport")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qnpof"]
+
 [node name="Node3D" type="Node3D" unique_id=1658306331]
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1724202613 node_paths=PackedStringArray("arrows")]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1724202613]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
 script = ExtResource("1_jjgbg")
 states = Array[Object]([SubResource("Resource_jjgbg"), SubResource("Resource_bo1nx"), SubResource("Resource_8gbba"), SubResource("Resource_jjvhh"), SubResource("Resource_kry3j")])
-arrows = {
+arrows = Dictionary[int, NodePath]({
 0: NodePath("../LEFT"),
 1: NodePath("../RIGHT"),
 2: NodePath("../UP"),
 3: NodePath("../DOWN")
-}
+})
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=653191799]
 mesh = SubResource("CylinderMesh_qnpof")
@@ -102,3 +107,19 @@ offset_bottom = 374.0
 rotation = 1.6109389
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_8gbba")
+
+[node name="computer_screen" type="Sprite3D" parent="." unique_id=1332076036]
+transform = Transform3D(0.1, 0, 0, 0, 0.09900237, 0.014090123, 0, -0.014090123, 0.09900237, 0.1388945, -0.022823632, 2.7225657)
+texture = SubResource("ViewportTexture_qnpof")
+
+[node name="SubViewport" type="SubViewport" parent="computer_screen" unique_id=342199176]
+
+[node name="Background" type="TextureRect" parent="computer_screen/SubViewport" unique_id=413163920]
+offset_right = 1000.0
+offset_bottom = 1000.0
+texture = SubResource("PlaceholderTexture2D_qnpof")
+
+[node name="Button" type="Button" parent="computer_screen/SubViewport" unique_id=496240279]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "testing testing"
