@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dqmhgnd04hpni" path="res://Code/CameraController.cs" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://dk8hk62n8ad4h" path="res://Code/CameraState.cs" id="2_bo1nx"]
+[ext_resource type="Texture2D" uid="uid://tnykojsawwmq" path="res://Textures/arrow.png" id="3_8gbba"]
 
 [sub_resource type="Resource" id="Resource_jjgbg"]
 script = ExtResource("2_bo1nx")
@@ -52,11 +53,52 @@ albedo_color = Color(1, 0.16470589, 1, 1)
 
 [node name="Node3D" type="Node3D" unique_id=1658306331]
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1724202613]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1724202613 node_paths=PackedStringArray("arrows")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
 script = ExtResource("1_jjgbg")
 states = Array[Object]([SubResource("Resource_jjgbg"), SubResource("Resource_bo1nx"), SubResource("Resource_8gbba"), SubResource("Resource_jjvhh"), SubResource("Resource_kry3j")])
+arrows = {
+0: NodePath("../LEFT"),
+1: NodePath("../RIGHT"),
+2: NodePath("../UP"),
+3: NodePath("../DOWN")
+}
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=653191799]
 mesh = SubResource("CylinderMesh_qnpof")
 surface_material_override/0 = SubResource("StandardMaterial3D_7dm0k")
+
+[node name="UP" type="TextureRect" parent="." unique_id=1534078190]
+offset_left = 557.0
+offset_top = -3.0
+offset_right = 657.0
+offset_bottom = 97.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_8gbba")
+
+[node name="DOWN" type="TextureRect" parent="." unique_id=1638131947]
+offset_left = 597.0
+offset_top = 649.0
+offset_right = 697.0
+offset_bottom = 749.0
+rotation = 3.1415927
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_8gbba")
+
+[node name="LEFT" type="TextureRect" parent="." unique_id=460954088]
+offset_left = 6.0
+offset_top = 324.0
+offset_right = 106.0
+offset_bottom = 424.0
+rotation = -1.6109389
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_8gbba")
+
+[node name="RIGHT" type="TextureRect" parent="." unique_id=1236221900]
+offset_left = 1148.0
+offset_top = 274.0
+offset_right = 1248.0
+offset_bottom = 374.0
+rotation = 1.6109389
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_8gbba")

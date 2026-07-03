@@ -2,16 +2,19 @@ using Godot;
 using Godot.Collections;
 using System;
 using System.Diagnostics;
+using System.Linq;
 
 public partial class CameraController : Camera3D
 {
 	[Export] Array<CameraState> states;
+	[Export] Dictionary<CameraDirection, NodePath> arrows;
 	CameraState currentState;
 	bool isInMovementArea = false;
 	Vector3 goalRotation;
 
 	public override void _Ready()
 	{
+		Debug.WriteLine(arrows[0]);
 		currentState = states[0];
 		goalRotation = Rotation;
 	}
@@ -85,5 +88,10 @@ public partial class CameraController : Camera3D
 		{
 			isInMovementArea = false;
 		}
+
+		foreach (var cameraDirection in Enum.GetValues(typeof(CameraDirection)).Cast<CameraDirection>()) {
+			GetNode<CanvasItem>(arrows[cameraDirection]).Modulate = currentState.transitions.ContainsKey(cameraDirection) ? Color.Color8(255, 255, 255) : Color.Color8(100, 100, 100, 40);
+		}
+
 	}
 }
