@@ -20,7 +20,6 @@ public partial class CameraController : Camera3D
 	{
 		if (currentState.transitions.TryGetValue(direction, out int newState))
 		{
-			Debug.WriteLine(newState);
 			currentState = states[newState];
 			goalRotation = currentState.rotation;
 			isInMovementArea = true;
@@ -40,6 +39,26 @@ public partial class CameraController : Camera3D
 	public override void _PhysicsProcess(double delta)
 	{
 		Rotation = Rotation.Lerp(goalRotation * (float.Pi / 180.0f), 0.5f);
+	}
+
+	public override void _Input(InputEvent @event)
+	{
+		if (@event.IsActionPressed("up"))
+		{
+			MoveCamera(CameraDirection.UP);
+		} 
+		else if (@event.IsActionPressed("down"))
+		{
+			MoveCamera(CameraDirection.DOWN);
+		}
+		else if (@event.IsActionPressed("right"))
+		{
+			MoveCamera(CameraDirection.RIGHT);
+		}
+		else if (@event.IsActionPressed("left"))
+		{
+			MoveCamera(CameraDirection.LEFT);
+		}
 	}
 
 	public override void _Process(double delta)
