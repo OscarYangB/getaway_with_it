@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dm87lq54y8o4d"]
 
-[ext_resource type="Script" uid="uid://dqmhgnd04hpni" path="res://CameraController.cs" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://dqmhgnd04hpni" path="res://Code/CameraController.cs" id="1_jjgbg"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_qnpof"]
 
@@ -13,7 +13,7 @@ albedo_color = Color(1, 0.16470589, 1, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
 
 [node name="Node" type="Node" parent="Camera3D" unique_id=343361632]
-script = ExtResource("1_ig7tw")
+script = ExtResource("1_jjgbg")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=653191799]
 mesh = SubResource("CylinderMesh_qnpof")
