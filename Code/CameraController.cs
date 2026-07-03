@@ -1,23 +1,30 @@
 using Godot;
+using Godot.Collections;
 using System;
 using System.Diagnostics;
 
-public partial class CameraController : Node
+public partial class CameraController : Camera3D
 {
-	Node3D parent;
+	[Export] Array<CameraState> states;
+	CameraState currentState;
 	bool isInMovementArea = false;
 	Vector3 goalRotation;
 
 	public override void _Ready()
 	{
-		parent = GetParent<Node3D>();
-		goalRotation = parent.Rotation;
+		currentState = states[0];
+		goalRotation = Rotation;
 	}
 
-	void MoveCamera(Vector3 axis)
+	void MoveCamera(CameraDirection direction)
 	{
-		goalRotation = goalRotation.Rotated(axis, float.Pi / 2.0f);
-		isInMovementArea = true;
+		if (currentState.transitions.TryGetValue(direction, out int newState))
+		{
+			Debug.WriteLine(newState);
+			currentState = states[newState];
+			goalRotation = currentState.rotation;
+			isInMovementArea = true;
+		}
 	}
 
 	float GetYMouse()
@@ -30,28 +37,30 @@ public partial class CameraController : Node
 		return GetViewport().GetMousePosition().X / GetViewport().GetVisibleRect().Size.X;
 	}
 
+	public override void _PhysicsProcess(double delta)
+	{
+		Rotation = Rotation.Lerp(goalRotation * (float.Pi / 180.0f), 0.5f);
+	}
+
 	public override void _Process(double delta)
 	{
-		Debug.WriteLine(goalRotation);
-		parent.Rotation = parent.Rotation.Lerp(goalRotation, 0.5f);
-
 		if (!isInMovementArea)
 		{
 			if (GetXMouse() > 0.9f)
 			{
-				MoveCamera(new Vector3(1.0f, 0.0f, 0.0f));
+				MoveCamera(CameraDirection.RIGHT);
 			}
 			else if (GetXMouse() < 0.1f)
 			{
-				MoveCamera(new Vector3(-1.0f, 0.0f, 0.0f));
+				MoveCamera(CameraDirection.LEFT);
 			}
 			else if (GetYMouse() < 0.1f)
 			{
-				MoveCamera(new Vector3(0.0f, -1.0f, 0.0f));
+				MoveCamera(CameraDirection.UP);
 			}
 			else if (GetYMouse() > 0.9f)
 			{
-				MoveCamera(new Vector3(0.0f, 1.0f, 0.0f));
+				MoveCamera(CameraDirection.DOWN);
 			}
 		} else if (GetYMouse() < 0.8f && GetYMouse() > 0.2f && GetXMouse() < 0.8f && GetXMouse() > 0.2f)
 		{

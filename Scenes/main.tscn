@@ -1,6 +1,49 @@
 [gd_scene format=3 uid="uid://dm87lq54y8o4d"]
 
 [ext_resource type="Script" uid="uid://dqmhgnd04hpni" path="res://Code/CameraController.cs" id="1_jjgbg"]
+[ext_resource type="Script" uid="uid://dk8hk62n8ad4h" path="res://Code/CameraState.cs" id="2_bo1nx"]
+
+[sub_resource type="Resource" id="Resource_jjgbg"]
+script = ExtResource("2_bo1nx")
+transitions = Dictionary[int, int]({
+0: 3,
+1: 4,
+2: 1,
+3: 2
+})
+metadata/_custom_type_script = "uid://dk8hk62n8ad4h"
+
+[sub_resource type="Resource" id="Resource_bo1nx"]
+script = ExtResource("2_bo1nx")
+rotation = Vector3(30, 0, 0)
+transitions = Dictionary[int, int]({
+3: 0
+})
+metadata/_custom_type_script = "uid://dk8hk62n8ad4h"
+
+[sub_resource type="Resource" id="Resource_8gbba"]
+script = ExtResource("2_bo1nx")
+rotation = Vector3(-30, 0, 0)
+transitions = Dictionary[int, int]({
+2: 0
+})
+metadata/_custom_type_script = "uid://dk8hk62n8ad4h"
+
+[sub_resource type="Resource" id="Resource_jjvhh"]
+script = ExtResource("2_bo1nx")
+rotation = Vector3(0, 30, 0)
+transitions = Dictionary[int, int]({
+1: 0
+})
+metadata/_custom_type_script = "uid://dk8hk62n8ad4h"
+
+[sub_resource type="Resource" id="Resource_kry3j"]
+script = ExtResource("2_bo1nx")
+rotation = Vector3(0, -30, 0)
+transitions = Dictionary[int, int]({
+0: 0
+})
+metadata/_custom_type_script = "uid://dk8hk62n8ad4h"
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_qnpof"]
 
@@ -11,9 +54,8 @@ albedo_color = Color(1, 0.16470589, 1, 1)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1724202613]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
-
-[node name="Node" type="Node" parent="Camera3D" unique_id=343361632]
 script = ExtResource("1_jjgbg")
+states = Array[Object]([SubResource("Resource_jjgbg"), SubResource("Resource_bo1nx"), SubResource("Resource_8gbba"), SubResource("Resource_jjvhh"), SubResource("Resource_kry3j")])
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=653191799]
 mesh = SubResource("CylinderMesh_qnpof")

@@ -32,7 +32,7 @@
               "RelativeDocumentMoniker": "Code\\CameraState.cs",
               "ToolTip": "C:\\Projects\\Godot Projects\\getaway-with-it\\Code\\CameraState.cs",
               "RelativeToolTip": "Code\\CameraState.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAArAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-03T14:16:33.715Z",
               "EditorCaption": ""
@@ -45,10 +45,14 @@
               "RelativeDocumentMoniker": "Code\\CameraController.cs",
               "ToolTip": "C:\\Projects\\Godot Projects\\getaway-with-it\\Code\\CameraController.cs",
               "RelativeToolTip": "Code\\CameraController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABYAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwBMAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-03T13:49:39.273Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             }
           ]
         }
