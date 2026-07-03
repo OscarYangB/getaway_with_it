@@ -8,15 +8,16 @@ public partial class CameraController : Camera3D
 {
 	[Export] Array<CameraState> states;
 	[Export] Dictionary<CameraDirection, NodePath> arrows;
+	[Export] WorldEnvironment worldEnvironment;
 	CameraState currentState;
 	bool isInMovementArea = false;
 	Vector3 goalRotation;
 
 	public override void _Ready()
 	{
-		Debug.WriteLine(arrows[0]);
 		currentState = states[0];
 		goalRotation = Rotation;
+		((CameraAttributesPractical)worldEnvironment.CameraAttributes).DofBlurNearDistance = currentState.focusDistance;
 	}
 
 	void MoveCamera(CameraDirection direction)
@@ -26,6 +27,7 @@ public partial class CameraController : Camera3D
 			currentState = states[newState];
 			goalRotation = currentState.rotation;
 			isInMovementArea = true;
+			((CameraAttributesPractical)worldEnvironment.CameraAttributes).DofBlurNearDistance = currentState.focusDistance;
 		}
 	}
 

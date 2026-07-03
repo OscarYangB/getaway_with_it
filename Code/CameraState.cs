@@ -14,6 +14,7 @@ public partial class CameraState : Resource
 {
 	[Export] public Vector3 rotation;
 	[Export] public Dictionary<CameraDirection, int> transitions;
+	[Export] public float focusDistance;
 
 	public CameraState()
 	{
