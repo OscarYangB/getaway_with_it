@@ -10,6 +10,7 @@ public partial class CameraController : Camera3D
 	[Export] Dictionary<CameraDirection, NodePath> arrows;
 	[Export] WorldEnvironment worldEnvironment;
 	[Export] float stateTransitionLength = 0.05f;
+	[Export] NodePath dialogNode;
 	CameraState oldState;
 	CameraState currentState;
 	bool isInMovementArea = false;
@@ -114,5 +115,9 @@ public partial class CameraController : Camera3D
 
 		stateTransitionProgress += (float)delta * 1.0f / stateTransitionLength;
 		stateTransitionProgress = Math.Clamp(stateTransitionProgress, 0.0f, 1.0f);
+
+		float oldDialogVisibility = oldState.isDialogVisible ? 1.0f : 0.0f;
+		float newDialogVisibility = currentState.isDialogVisible ? 1.0f : 0.0f;
+		GetNode<CanvasItem>(dialogNode).Modulate = new Color(1.0f, 1.0f, 1.0f, Mathf.Lerp(oldDialogVisibility, newDialogVisibility, stateTransitionProgress));
 	}
 }
