@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cll8dnweav0rd" path="res://Meshes/Travel Agency Building Interior.glb" id="4_kry3j"]
 [ext_resource type="FontFile" uid="uid://bg1bnet7egdq7" path="res://Fonts/ITC Anna Regular.otf" id="6_21xkr"]
 [ext_resource type="Script" uid="uid://um555hf2ti4b" path="res://Code/Interactable.cs" id="7_6bp64"]
+[ext_resource type="Texture2D" uid="uid://d3bw4sgj6mxu3" path="res://Textures/sunglasses_woman.png" id="8_344ge"]
 
 [sub_resource type="Resource" id="Resource_jjgbg"]
 script = ExtResource("2_bo1nx")
@@ -121,6 +122,7 @@ dialogNode = NodePath("../Dialog")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=653191799]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5807815, -0.42358935)
+visible = false
 mesh = SubResource("CylinderMesh_qnpof")
 surface_material_override/0 = SubResource("StandardMaterial3D_7dm0k")
 
@@ -232,7 +234,8 @@ custom_minimum_size = Vector2(600, 0)
 custom_maximum_size = Vector2(600, -1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_21xkr")
-text = "asdasdasda asd asd asd as dasd as dasd asd asd as dasd"
+theme_override_font_sizes/font_size = 21
+text = "This is dialog. There is somebody talking right now."
 autowrap_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="Dialog/HSplitBox" unique_id=138794028]
@@ -253,3 +256,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_344ge")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=1875758575]
 shape = SubResource("SphereShape3D_qnpof")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=892915685]
+transform = Transform3D(0.17, 0, 0, 0, 0.17, 0, 0, 0, 0.17, 0, 3.0536077, -0.18091929)
+texture = ExtResource("8_344ge")
