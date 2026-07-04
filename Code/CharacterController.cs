@@ -33,6 +33,91 @@ public partial class CharacterController : Node
 
 	List<string> themes = [];
 
+	bool isCriminal;
+	string introLine;
+	string whereLine;
+	string whoLine;
+	string activitiesLine;
+	string moneyLine;
+
+	Random random = new();
+
+	void initCharacter()
+	{
+		isCriminal = random.Next(2) == 0 ? false : true;
+		bool shouldHaveThemedTag = isCriminal;
+		for (int i = 0; i < 10; i++)
+		{
+			int indexNumber = random.Next(introDialog.Count);
+			bool hasTheme = false;
+			foreach (string tag in introDialog[indexNumber].tags)
+			{
+				hasTheme |= themes.Contains(tag);
+			}
+			introLine = introDialog[indexNumber].text;
+			if (shouldHaveThemedTag == hasTheme)
+			{
+				break;
+			}
+		}
+		for (int i = 0; i < 10; i++)
+		{
+			int indexNumber = random.Next(whereDialog.Count);
+			bool hasTheme = false;
+			foreach (string tag in whereDialog[indexNumber].tags)
+			{
+				hasTheme |= themes.Contains(tag);
+			}
+			whereLine = whereDialog[indexNumber].text;
+			if (shouldHaveThemedTag == hasTheme)
+			{
+				break;
+			}
+		}
+		for (int i = 0; i < 10; i++)
+		{
+			int indexNumber = random.Next(whoDialog.Count);
+			bool hasTheme = false;
+			foreach (string tag in whoDialog[indexNumber].tags)
+			{
+				hasTheme |= themes.Contains(tag);
+			}
+			whoLine = whoDialog[indexNumber].text;
+			if (shouldHaveThemedTag == hasTheme)
+			{
+				break;
+			}
+		}
+		for (int i = 0; i < 10; i++)
+		{
+			int indexNumber = random.Next(activitiesDialog.Count);
+			bool hasTheme = false;
+			foreach (string tag in activitiesDialog[indexNumber].tags)
+			{
+				hasTheme |= themes.Contains(tag);
+			}
+			activitiesLine = activitiesDialog[indexNumber].text;
+			if (shouldHaveThemedTag == hasTheme)
+			{
+				break;
+			}
+		}
+		for (int i = 0; i < 10; i++)
+		{
+			int indexNumber = random.Next(moneyDialog.Count);
+			bool hasTheme = false;
+			foreach (string tag in moneyDialog[indexNumber].tags)
+			{
+				hasTheme |= themes.Contains(tag);
+			}
+			moneyLine = moneyDialog[indexNumber].text;
+			if (shouldHaveThemedTag == hasTheme)
+			{
+				break;
+			}
+		}
+	}
+
 	void readDialogFile(string fileName, List<Dialog> dialogList)
 	{
 		FileAccess file = FileAccess.Open(fileName, FileAccess.ModeFlags.Read);
@@ -72,10 +157,16 @@ public partial class CharacterController : Node
 			}
 		}*/
 
-		selectTags();
+		selectThemes();
+		initCharacter();
+		Debug.WriteLine("Intro: " + introLine);
+		Debug.WriteLine("Where: " + whereLine);
+		Debug.WriteLine("who: " + whoLine);
+		Debug.WriteLine("Activities: " + activitiesLine);
+		Debug.WriteLine("Money: " + moneyLine);
 	}
 
-	void selectTags()
+	void selectThemes()
 	{
 		HashSet<string> uniqueTags = [];
 		List<Dialog> allDialog = [];
@@ -92,7 +183,6 @@ public partial class CharacterController : Node
 			}
 		}
 
-		Random random = new();
 		HashSet<string> randomTags = [];
 		while (randomTags.Count != 3)
 		{
