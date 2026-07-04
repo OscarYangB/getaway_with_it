@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://p035qr32uw45" path="res://Code/WorldUI.cs" id="4_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://cll8dnweav0rd" path="res://Meshes/Travel Agency Building Interior.glb" id="4_kry3j"]
 [ext_resource type="FontFile" uid="uid://bg1bnet7egdq7" path="res://Fonts/ITC Anna Regular.otf" id="6_21xkr"]
+[ext_resource type="Script" uid="uid://um555hf2ti4b" path="res://Code/Interactable.cs" id="7_6bp64"]
 
 [sub_resource type="Resource" id="Resource_jjgbg"]
 script = ExtResource("2_bo1nx")
@@ -78,10 +79,35 @@ dof_blur_near_enabled = true
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2tu2c"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qnpof"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_qnpof"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6bp64"]
+render_priority = 1
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.9764706, 0.7490196, 0, 1)
+grow = true
+grow_amount = 0.053
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_344ge"]
+next_pass = SubResource("StandardMaterial3D_6bp64")
+stencil_mode = 1
+stencil_flags = 2
+stencil_color = Color(0.9764706, 0.7490196, 0, 1)
+stencil_outline_thickness = 0.053
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qnpof"]
+
 [node name="Node3D" type="Node3D" unique_id=1658306331]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1724202613 node_paths=PackedStringArray("worldEnvironment")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 3.700615)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3436584, 3.700615)
 script = ExtResource("1_jjgbg")
 states = Array[Object]([SubResource("Resource_jjgbg"), SubResource("Resource_bo1nx"), SubResource("Resource_8gbba"), SubResource("Resource_jjvhh"), SubResource("Resource_kry3j")])
 arrows = Dictionary[int, NodePath]({
@@ -94,7 +120,7 @@ worldEnvironment = NodePath("../WorldEnvironment")
 dialogNode = NodePath("../Dialog")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=653191799]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3948274, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5807815, -0.42358935)
 mesh = SubResource("CylinderMesh_qnpof")
 surface_material_override/0 = SubResource("StandardMaterial3D_7dm0k")
 
@@ -214,3 +240,16 @@ custom_minimum_size = Vector2(100, 100)
 custom_maximum_size = Vector2(100, 100)
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_2tu2c")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=1256203175 node_paths=PackedStringArray("mesh")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.44359165, 0.9492334, 3.1478798)
+physics_material_override = SubResource("PhysicsMaterial_qnpof")
+script = ExtResource("7_6bp64")
+mesh = NodePath("MeshInstance3D2")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D2" unique_id=2115775481]
+mesh = SubResource("SphereMesh_qnpof")
+surface_material_override/0 = SubResource("StandardMaterial3D_344ge")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=1875758575]
+shape = SubResource("SphereShape3D_qnpof")
