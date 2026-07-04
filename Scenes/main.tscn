@@ -73,6 +73,10 @@ dof_blur_far_distance = 8192.0
 dof_blur_far_transition = 1.0
 dof_blur_near_enabled = true
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_yuyls"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2tu2c"]
+
 [node name="Node3D" type="Node3D" unique_id=1658306331]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1724202613 node_paths=PackedStringArray("worldEnvironment")]
@@ -86,7 +90,7 @@ arrows = Dictionary[int, NodePath]({
 3: NodePath("../DOWN")
 })
 worldEnvironment = NodePath("../WorldEnvironment")
-dialogNode = NodePath("../Label")
+dialogNode = NodePath("../Dialog")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=653191799]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3948274, 0)
@@ -165,9 +169,46 @@ shape = SubResource("BoxShape3D_qnpof")
 environment = SubResource("Environment_qnpof")
 camera_attributes = SubResource("CameraAttributesPractical_2tu2c")
 
-[node name="Label" type="Label" parent="." unique_id=105020616]
-offset_left = 487.0
-offset_top = 558.0
-offset_right = 711.0
-offset_bottom = 581.0
-text = "This is dialog. A guy is talking"
+[node name="Dialog" type="Control" parent="." unique_id=738153025]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -65.0
+offset_right = 40.0
+offset_bottom = -25.0
+
+[node name="TextureRect2" type="TextureRect" parent="Dialog" unique_id=540850621]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 548.0
+offset_right = 963.0
+offset_bottom = 648.0
+texture = SubResource("PlaceholderTexture2D_yuyls")
+
+[node name="HSplitBox" type="HSplitContainer" parent="Dialog" unique_id=2097737329]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 195.0
+offset_top = 508.0
+offset_right = 1044.0
+offset_bottom = 608.0
+grow_horizontal = 2
+grow_vertical = 0
+split_offsets = PackedInt32Array(224)
+split_offset = 224
+
+[node name="Label" type="Label" parent="Dialog/HSplitBox" unique_id=105020616]
+custom_minimum_size = Vector2(600, 0)
+custom_maximum_size = Vector2(600, -1)
+layout_mode = 2
+text = "asdasdasda asd asd asd as dasd as dasd asd asd as dasd"
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Dialog/HSplitBox" unique_id=138794028]
+custom_minimum_size = Vector2(100, 100)
+custom_maximum_size = Vector2(100, 100)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_2tu2c")
