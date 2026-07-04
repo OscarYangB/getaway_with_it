@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://tnykojsawwmq" path="res://Textures/arrow.png" id="3_8gbba"]
 [ext_resource type="Script" uid="uid://p035qr32uw45" path="res://Code/WorldUI.cs" id="4_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://cll8dnweav0rd" path="res://Meshes/Travel Agency Building Interior.glb" id="4_kry3j"]
+[ext_resource type="FontFile" uid="uid://bg1bnet7egdq7" path="res://Fonts/ITC Anna Regular.otf" id="6_21xkr"]
 
 [sub_resource type="Resource" id="Resource_jjgbg"]
 script = ExtResource("2_bo1nx")
@@ -204,6 +205,7 @@ split_offset = 224
 custom_minimum_size = Vector2(600, 0)
 custom_maximum_size = Vector2(600, -1)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_21xkr")
 text = "asdasdasda asd asd asd as dasd as dasd asd asd as dasd"
 autowrap_mode = 2
 
