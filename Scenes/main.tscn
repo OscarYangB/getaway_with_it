@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dk8hk62n8ad4h" path="res://Code/CameraState.cs" id="2_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://tnykojsawwmq" path="res://Textures/arrow.png" id="3_8gbba"]
 [ext_resource type="Script" uid="uid://p035qr32uw45" path="res://Code/WorldUI.cs" id="4_jjvhh"]
-[ext_resource type="PackedScene" uid="uid://cll8dnweav0rd" path="res://Meshes/Travel Agency Building Interior.glb" id="4_kry3j"]
+[ext_resource type="PackedScene" uid="uid://dx7jkwyd1ssfi" path="res://Scenes/TravelAgencyBuildingInterior.tscn" id="4_ynf5e"]
 [ext_resource type="FontFile" uid="uid://bg1bnet7egdq7" path="res://Fonts/ITC Anna Regular.otf" id="6_21xkr"]
 [ext_resource type="Script" uid="uid://um555hf2ti4b" path="res://Code/Interactable.cs" id="7_6bp64"]
 [ext_resource type="Texture2D" uid="uid://d3bw4sgj6mxu3" path="res://Textures/sunglasses_woman.png" id="8_344ge"]
@@ -118,8 +118,8 @@ arrows = Dictionary[int, NodePath]({
 2: NodePath("../UP"),
 3: NodePath("../DOWN")
 })
-worldEnvironment = NodePath("../WorldEnvironment")
 dialogNode = NodePath("../Dialog")
+worldEnvironment = NodePath("../WorldEnvironment")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=653191799]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5807815, -0.42358935)
@@ -162,7 +162,7 @@ rotation = 1.6109389
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_8gbba")
 
-[node name="Travel Agency Building Interior" parent="." unique_id=330904016 instance=ExtResource("4_kry3j")]
+[node name="TravelAgencyBuildingInterior" parent="." unique_id=1688673945 instance=ExtResource("4_ynf5e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.49)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=895672297 node_paths=PackedStringArray("collider", "subviewport")]
