@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dk8hk62n8ad4h" path="res://Code/CameraState.cs" id="2_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://tnykojsawwmq" path="res://Textures/arrow.png" id="3_8gbba"]
 [ext_resource type="Script" uid="uid://p035qr32uw45" path="res://Code/WorldUI.cs" id="4_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://cll8dnweav0rd" path="res://Meshes/Travel Agency Building Interior.glb" id="4_kry3j"]
 
 [sub_resource type="Resource" id="Resource_jjgbg"]
 script = ExtResource("2_bo1nx")
@@ -13,7 +14,7 @@ transitions = Dictionary[int, int]({
 2: 1,
 3: 2
 })
-blurFarDistance = 2.0
+blurFarDistance = 3.0
 metadata/_custom_type_script = "uid://dk8hk62n8ad4h"
 
 [sub_resource type="Resource" id="Resource_bo1nx"]
@@ -22,7 +23,7 @@ rotation = Vector3(15, 0, 0)
 transitions = Dictionary[int, int]({
 3: 0
 })
-blurNearDistance = 1.5
+blurNearDistance = 1.8
 metadata/_custom_type_script = "uid://dk8hk62n8ad4h"
 
 [sub_resource type="Resource" id="Resource_8gbba"]
@@ -31,7 +32,7 @@ rotation = Vector3(-30, 0, 0)
 transitions = Dictionary[int, int]({
 2: 0
 })
-blurFarDistance = 1.0
+blurFarDistance = 1.1
 metadata/_custom_type_script = "uid://dk8hk62n8ad4h"
 
 [sub_resource type="Resource" id="Resource_jjvhh"]
@@ -74,7 +75,7 @@ dof_blur_near_enabled = true
 [node name="Node3D" type="Node3D" unique_id=1658306331]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1724202613 node_paths=PackedStringArray("worldEnvironment")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 3.700615)
 script = ExtResource("1_jjgbg")
 states = Array[Object]([SubResource("Resource_jjgbg"), SubResource("Resource_bo1nx"), SubResource("Resource_8gbba"), SubResource("Resource_jjvhh"), SubResource("Resource_kry3j")])
 arrows = Dictionary[int, NodePath]({
@@ -125,8 +126,11 @@ rotation = 1.6109389
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_8gbba")
 
+[node name="Travel Agency Building Interior" parent="." unique_id=330904016 instance=ExtResource("4_kry3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.49)
+
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=895672297 node_paths=PackedStringArray("collider", "subviewport")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8867127, 0.36349845)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2360044, -0.28342295)
 script = ExtResource("4_jjvhh")
 collider = NodePath("CollisionShape3D")
 subviewport = NodePath("computer_screen/SubViewport")
