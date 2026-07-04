@@ -13,11 +13,23 @@ public partial class CameraController : Camera3D
 	bool isInMovementArea = false;
 	Vector3 goalRotation;
 
+	void refreshBlur()
+	{
+		if (currentState.blurFarDistance > 0.0f)
+		{
+			((CameraAttributesPractical)worldEnvironment.CameraAttributes).DofBlurFarDistance = currentState.blurFarDistance;
+		}
+		if (currentState.blurNearDistance > 0.0f)
+		{
+			((CameraAttributesPractical)worldEnvironment.CameraAttributes).DofBlurNearDistance = currentState.blurNearDistance;
+		}
+	}
+
 	public override void _Ready()
 	{
 		currentState = states[0];
 		goalRotation = Rotation;
-		((CameraAttributesPractical)worldEnvironment.CameraAttributes).DofBlurNearDistance = currentState.focusDistance;
+		refreshBlur();
 	}
 
 	void MoveCamera(CameraDirection direction)
@@ -27,7 +39,7 @@ public partial class CameraController : Camera3D
 			currentState = states[newState];
 			goalRotation = currentState.rotation;
 			isInMovementArea = true;
-			((CameraAttributesPractical)worldEnvironment.CameraAttributes).DofBlurNearDistance = currentState.focusDistance;
+			refreshBlur();
 		}
 	}
 

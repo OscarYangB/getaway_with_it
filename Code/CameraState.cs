@@ -14,7 +14,8 @@ public partial class CameraState : Resource
 {
 	[Export] public Vector3 rotation;
 	[Export] public Dictionary<CameraDirection, int> transitions;
-	[Export] public float focusDistance;
+	[Export] public float blurFarDistance = 8000.0f;
+	[Export] public float blurNearDistance = 0.1f;
 
 	public CameraState()
 	{
