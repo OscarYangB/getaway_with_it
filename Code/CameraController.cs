@@ -8,7 +8,7 @@ public partial class CameraController : Camera3D
 	[Export] Array<CameraState> states;
 	[Export] Dictionary<CameraDirection, NodePath> arrows;
 	[Export] WorldEnvironment worldEnvironment;
-	[Export] float stateTransitionLength = 0.05f;
+	[Export] float stateTransitionLength = 0.1f;
 	[Export] NodePath dialogNode;
 	CameraState oldState;
 	CameraState currentState;
@@ -139,5 +139,7 @@ public partial class CameraController : Camera3D
 		float oldDialogVisibility = oldState.isDialogVisible ? 1.0f : 0.0f;
 		float newDialogVisibility = currentState.isDialogVisible ? 1.0f : 0.0f;
 		GetNode<CanvasItem>(dialogNode).Modulate = new Color(1.0f, 1.0f, 1.0f, Mathf.Lerp(oldDialogVisibility, newDialogVisibility, stateTransitionProgress));
+		GetNode<Control>(dialogNode).MouseFilter = newDialogVisibility > 0.0f ? Control.MouseFilterEnum.Pass : Control.MouseFilterEnum.Ignore;
+
 	}
 }

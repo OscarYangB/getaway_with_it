@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://p035qr32uw45" path="res://Code/WorldUI.cs" id="4_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://cll8dnweav0rd" path="res://Meshes/Travel Agency Building Interior.glb" id="4_kry3j"]
 [ext_resource type="FontFile" uid="uid://bg1bnet7egdq7" path="res://Fonts/ITC Anna Regular.otf" id="6_21xkr"]
+[ext_resource type="Texture2D" uid="uid://c3rqsc21yb21w" path="res://Textures/frame.png" id="6_hptm8"]
 [ext_resource type="Script" uid="uid://um555hf2ti4b" path="res://Code/Interactable.cs" id="7_6bp64"]
 [ext_resource type="Texture2D" uid="uid://d3bw4sgj6mxu3" path="res://Textures/sunglasses_woman.png" id="8_344ge"]
 [ext_resource type="Script" uid="uid://bgu4fk45anm6v" path="res://Code/CharacterController.cs" id="9_ynf5e"]
@@ -23,7 +24,7 @@ metadata/_custom_type_script = "uid://dk8hk62n8ad4h"
 
 [sub_resource type="Resource" id="Resource_bo1nx"]
 script = ExtResource("2_bo1nx")
-rotation = Vector3(15, 0, 0)
+rotation = Vector3(10, 0, 0)
 transitions = Dictionary[int, int]({
 3: 0
 })
@@ -77,10 +78,6 @@ dof_blur_far_distance = 8192.0
 dof_blur_far_transition = 1.0
 dof_blur_near_enabled = true
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_yuyls"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2tu2c"]
-
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qnpof"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_qnpof"]
@@ -109,7 +106,7 @@ stencil_outline_thickness = 0.053
 [node name="Node3D" type="Node3D" unique_id=1658306331]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1724202613 node_paths=PackedStringArray("worldEnvironment")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3436584, 3.700615)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5006328, 3.700615)
 script = ExtResource("1_jjgbg")
 states = Array[Object]([SubResource("Resource_jjgbg"), SubResource("Resource_bo1nx"), SubResource("Resource_8gbba"), SubResource("Resource_jjvhh"), SubResource("Resource_kry3j")])
 arrows = Dictionary[int, NodePath]({
@@ -126,41 +123,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5807815, -0.42358935)
 visible = false
 mesh = SubResource("CylinderMesh_qnpof")
 surface_material_override/0 = SubResource("StandardMaterial3D_7dm0k")
-
-[node name="UP" type="TextureRect" parent="." unique_id=1534078190]
-offset_left = 557.0
-offset_top = -3.0
-offset_right = 657.0
-offset_bottom = 97.0
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("3_8gbba")
-
-[node name="DOWN" type="TextureRect" parent="." unique_id=1638131947]
-offset_left = 597.0
-offset_top = 649.0
-offset_right = 697.0
-offset_bottom = 749.0
-rotation = 3.1415927
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("3_8gbba")
-
-[node name="LEFT" type="TextureRect" parent="." unique_id=460954088]
-offset_left = 6.0
-offset_top = 324.0
-offset_right = 106.0
-offset_bottom = 424.0
-rotation = -1.6109389
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("3_8gbba")
-
-[node name="RIGHT" type="TextureRect" parent="." unique_id=1236221900]
-offset_left = 1148.0
-offset_top = 274.0
-offset_right = 1248.0
-offset_bottom = 374.0
-rotation = 1.6109389
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("3_8gbba")
 
 [node name="Travel Agency Building Interior" parent="." unique_id=330904016 instance=ExtResource("4_kry3j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.49)
@@ -206,47 +168,110 @@ offset_top = -65.0
 offset_right = 40.0
 offset_bottom = -25.0
 
-[node name="TextureRect2" type="TextureRect" parent="Dialog" unique_id=540850621]
+[node name="Background" type="TextureRect" parent="Dialog" unique_id=540850621]
 layout_mode = 0
-offset_left = 208.0
-offset_top = 548.0
-offset_right = 963.0
-offset_bottom = 648.0
-texture = SubResource("PlaceholderTexture2D_yuyls")
+offset_left = 237.0
+offset_top = 377.0
+offset_right = 4957.0
+offset_bottom = 2383.6665
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("6_hptm8")
 
-[node name="HSplitBox" type="HSplitContainer" parent="Dialog" unique_id=2097737329]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 195.0
-offset_top = 508.0
-offset_right = 1044.0
-offset_bottom = 608.0
-grow_horizontal = 2
-grow_vertical = 0
-split_offsets = PackedInt32Array(224)
-split_offset = 224
-
-[node name="Label" type="Label" parent="Dialog/HSplitBox" unique_id=105020616]
+[node name="Speaker" type="Label" parent="Dialog" unique_id=105020616]
 custom_minimum_size = Vector2(600, 0)
 custom_maximum_size = Vector2(600, -1)
-layout_mode = 2
+layout_mode = 0
+offset_left = 266.0
+offset_top = 407.99997
+offset_right = 866.0
+offset_bottom = 431.99997
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_21xkr")
 theme_override_font_sizes/font_size = 21
 text = "This is dialog. There is somebody talking right now."
 autowrap_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Dialog/HSplitBox" unique_id=138794028]
-custom_minimum_size = Vector2(100, 100)
-custom_maximum_size = Vector2(100, 100)
-layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_2tu2c")
+[node name="WhereButton" type="Button" parent="Dialog" unique_id=644605464]
+layout_mode = 0
+offset_left = 266.0
+offset_top = 467.99997
+offset_right = 915.0
+offset_bottom = 509.0
+theme_override_fonts/font = ExtResource("6_21xkr")
+theme_override_font_sizes/font_size = 21
+text = "So where do you want to go?"
+alignment = 0
+
+[node name="WhoButton" type="Button" parent="Dialog" unique_id=2024089589]
+layout_mode = 0
+offset_left = 267.0
+offset_top = 515.0
+offset_right = 916.0
+offset_bottom = 556.0
+theme_override_fonts/font = ExtResource("6_21xkr")
+theme_override_font_sizes/font_size = 21
+text = "Who are you planning on going with?"
+alignment = 0
+
+[node name="ActivitiesButton" type="Button" parent="Dialog" unique_id=260477840]
+layout_mode = 0
+offset_left = 267.0
+offset_top = 561.0
+offset_right = 916.0
+offset_bottom = 602.0
+theme_override_fonts/font = ExtResource("6_21xkr")
+theme_override_font_sizes/font_size = 21
+text = "What activities are you looking to do?"
+alignment = 0
+
+[node name="MoneyButton" type="Button" parent="Dialog" unique_id=1355798985]
+layout_mode = 0
+offset_left = 267.0
+offset_top = 606.0
+offset_right = 916.0
+offset_bottom = 647.0
+theme_override_fonts/font = ExtResource("6_21xkr")
+theme_override_font_sizes/font_size = 21
+text = "What's your budget?"
+alignment = 0
+
+[node name="UP" type="TextureRect" parent="." unique_id=1534078190]
+offset_left = 557.0
+offset_top = -3.0
+offset_right = 657.0
+offset_bottom = 97.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_8gbba")
+
+[node name="DOWN" type="TextureRect" parent="." unique_id=1638131947]
+offset_left = 597.0
+offset_top = 649.0
+offset_right = 697.0
+offset_bottom = 749.0
+rotation = 3.1415927
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_8gbba")
+
+[node name="LEFT" type="TextureRect" parent="." unique_id=460954088]
+offset_left = 6.0
+offset_top = 324.0
+offset_right = 106.0
+offset_bottom = 424.0
+rotation = -1.6109389
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_8gbba")
+
+[node name="RIGHT" type="TextureRect" parent="." unique_id=1236221900]
+offset_left = 1148.0
+offset_top = 274.0
+offset_right = 1248.0
+offset_bottom = 374.0
+rotation = 1.6109389
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_8gbba")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=1256203175 node_paths=PackedStringArray("mesh")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.444, 0.95, 3.148)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.444, 0.95, 3.0103402)
 physics_material_override = SubResource("PhysicsMaterial_qnpof")
 script = ExtResource("7_6bp64")
 mesh = NodePath("MeshInstance3D2")
@@ -269,3 +294,8 @@ whereFile = "uid://btq7uwumiw6nq"
 whoFile = "uid://bqxp43i07uf56"
 activitiesFile = "uid://ci0qns6q57pf1"
 moneyFile = "uid://c4loijwkv6p6h"
+speechLabel = NodePath("../Dialog/Speaker")
+whereButton = NodePath("../Dialog/WhereButton")
+whoButton = NodePath("../Dialog/WhoButton")
+activitiesButton = NodePath("../Dialog/ActivitiesButton")
+moneyButton = NodePath("../Dialog/MoneyButton")
