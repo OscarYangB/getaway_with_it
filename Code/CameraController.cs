@@ -9,37 +9,29 @@ public partial class CameraController : Camera3D
 	[Export] Array<CameraState> states;
 	[Export] Dictionary<CameraDirection, NodePath> arrows;
 	[Export] WorldEnvironment worldEnvironment;
+	[Export] float stateTransitionLength = 0.05f;
+	CameraState oldState;
 	CameraState currentState;
 	bool isInMovementArea = false;
 	Vector3 goalRotation;
-
-	void refreshBlur()
-	{
-		if (currentState.blurFarDistance > 0.0f)
-		{
-			((CameraAttributesPractical)worldEnvironment.CameraAttributes).DofBlurFarDistance = currentState.blurFarDistance;
-		}
-		if (currentState.blurNearDistance > 0.0f)
-		{
-			((CameraAttributesPractical)worldEnvironment.CameraAttributes).DofBlurNearDistance = currentState.blurNearDistance;
-		}
-	}
+	float stateTransitionProgress = 0.0f;
 
 	public override void _Ready()
 	{
 		currentState = states[0];
+		oldState = currentState;
 		goalRotation = Rotation;
-		refreshBlur();
 	}
 
 	void MoveCamera(CameraDirection direction)
 	{
 		if (currentState.transitions.TryGetValue(direction, out int newState))
 		{
+			oldState = currentState;
 			currentState = states[newState];
 			goalRotation = currentState.rotation;
 			isInMovementArea = true;
-			refreshBlur();
+			stateTransitionProgress = 0.0f;
 		}
 	}
 
@@ -78,6 +70,11 @@ public partial class CameraController : Camera3D
 		}
 	}
 
+	Color getArrowColor(CameraState cameraState, CameraDirection cameraDirection)
+	{
+		return cameraState.transitions.ContainsKey(cameraDirection) ? Color.Color8(255, 255, 255) : Color.Color8(100, 100, 100, 40);
+	}
+
 	public override void _Process(double delta)
 	{
 		if (!isInMovementArea)
@@ -104,8 +101,18 @@ public partial class CameraController : Camera3D
 		}
 
 		foreach (var cameraDirection in Enum.GetValues(typeof(CameraDirection)).Cast<CameraDirection>()) {
-			GetNode<CanvasItem>(arrows[cameraDirection]).Modulate = currentState.transitions.ContainsKey(cameraDirection) ? Color.Color8(255, 255, 255) : Color.Color8(100, 100, 100, 40);
+			Color oldTargetColor = getArrowColor(oldState, cameraDirection);
+			Color newTargetColor = getArrowColor(currentState, cameraDirection);
+			Color color = oldTargetColor.Lerp(newTargetColor, stateTransitionProgress);
+			GetNode<CanvasItem>(arrows[cameraDirection]).Modulate = color;
 		}
 
+		float farBlur = Mathf.Lerp(oldState.blurFarDistance, currentState.blurFarDistance, stateTransitionProgress);
+		((CameraAttributesPractical)worldEnvironment.CameraAttributes).DofBlurFarDistance = farBlur;
+		float nearBlur = Mathf.Lerp(oldState.blurNearDistance, currentState.blurNearDistance, stateTransitionProgress);
+		((CameraAttributesPractical)worldEnvironment.CameraAttributes).DofBlurNearDistance = nearBlur;
+
+		stateTransitionProgress += (float)delta * 1.0f / stateTransitionLength;
+		stateTransitionProgress = Math.Clamp(stateTransitionProgress, 0.0f, 1.0f);
 	}
 }
