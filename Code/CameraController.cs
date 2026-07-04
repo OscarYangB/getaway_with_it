@@ -1,7 +1,6 @@
 using Godot;
 using Godot.Collections;
 using System;
-using System.Diagnostics;
 using System.Linq;
 
 public partial class CameraController : Camera3D
@@ -16,9 +15,30 @@ public partial class CameraController : Camera3D
 	bool isInMovementArea = false;
 	Vector3 goalRotation;
 	float stateTransitionProgress = 0.0f;
+	bool disableCameraMovement = false;
+	public static CameraController singleton;
+
+	public void DisableMovement()
+	{
+		disableCameraMovement = true;
+		foreach (var entry in arrows)
+		{
+			GetNode<CanvasItem>(entry.Value).Visible = false;
+		}
+	}
+
+	public void EnableMovement()
+	{
+		disableCameraMovement = false;
+		foreach (var entry in arrows)
+		{
+			GetNode<CanvasItem>(entry.Value).Visible = true;
+		}
+	}
 
 	public override void _Ready()
 	{
+		singleton = this;
 		currentState = states[0];
 		oldState = currentState;
 		goalRotation = Rotation;
@@ -78,7 +98,7 @@ public partial class CameraController : Camera3D
 
 	public override void _Process(double delta)
 	{
-		if (!isInMovementArea)
+		if (!isInMovementArea && !disableCameraMovement)
 		{
 			if (GetXMouse() > 0.9f)
 			{
