@@ -1,0 +1,86 @@
+[gd_scene format=4 uid="uid://bl1w11fsq1bqg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_frcyg"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_color = Color(0.31011912, 0.31011912, 0.31011912, 1)
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w2op5"]
+resource_name = "Material.002"
+cull_mode = 2
+albedo_color = Color(0.896096, 0.9063747, 0.7267847, 1)
+roughness = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_laf2i"]
+_surfaces = [{
+"aabb": AABB(-2.2, 0, -1.2, 4.4, 0.25, 2.4),
+"format": 34896613377,
+"index_count": 78,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAgADAAQAAAAFAAEABgAFAAAABAAIAAYABgAIAAUABAADAAgAAQAFAAoAAwABAAcAAQAKAAcACAADAAkAAwAHAAkABQAIAAsABQALAAoACAAJAAsADAAHAAoADQALAAkADgAJAAcADQAJAA4ADgAHAAwADwALAA0ADgAPAA0ADwAKAAsADgAMAA8ADAAKAA8A"),
+"lods": [0.00014193052, PackedByteArray("AAABAAIAAgABAAMAAgADAAQAAAAFAAEABgAFAAAAAwABAAcABAAIAAYABAADAAgABgAIAAUAAwAHAAkACAADAAkAAQAKAAcAAQAFAAoACQAHAAoABQAIAAsACAAJAAsABQALAAoACQAKAAsA")],
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("ogsAAKnqAAD//wAA//8AAFz0AACp6gAA//8AAAAAAABc9AAAVRUAAAAAAAD//wAAogsAAFUVAAD///////8AAAAAAAAAAAAA/////wAAAAAAAP////8AAAAA//8AAAAAXPT//6nqAACiC///VRUAAFz0//9VFQAAogv//6nqAAA=")
+}, {
+"aabb": AABB(-2, -0.25, -1, 4, 0.25, 2),
+"format": 34896613377,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAgADAAQAAAACAAQAAQAFAAMAAAAEAAYAAQAHAAUAAAAHAAEABwAGAAUABwAAAAYA"),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAAAAAAD//wAA//8AAP//AAAAAAAA////////AAD/////AAAAAAAA/////wAAAAD//wAAAAAAAAAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_impxp"]
+resource_name = "CeilingLight_Cube_001"
+_surfaces = [{
+"aabb": AABB(-2.2, 0, -1.2, 4.4, 0.25, 2.4),
+"attribute_data": PackedByteArray("/38AAP9//z//f/8//38AAP9//3//f/9//3//v/9//7//f////3////+f/3//3/8//9//f/+f/z//f////5//v/+f////f/+//3//v/+f/3//n/+//3//f/9//3//n/8//5//f/9//z//f/8//58AAP+f/z//fwAA/5//P//f/z//n/9//9//fw=="),
+"format": 34896613399,
+"index_count": 78,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgABAAQAAgAEAAUABQAEAAYABQAGAAcABwAGAAgABwAIAAkAHgALAB8AHgANAAsAHwALAAwAIAANAB4AIAAeAB8AIAAKAA0AHwAMACEAIAAfACEAIQAMAAoAIQAKACAADgAPABAADgARAA8AEgATABQAEgAVABMAFgAXABgAFgAZABcAGgAbABwAGgAdABsA"),
+"lods": [0.00014193052, PackedByteArray("AAABAAIAAAADAAEAAgABAAQAAgAEAAUABQAEAAYABQAGAAcABwAGAAgABwAIAAkACgALAAwACgANAAsADgAPABAADgARAA8AEgATABQAEgAVABMAFgAXABgAFgAZABcAGgAbABwAGgAdABsA")],
+"material": SubResource("StandardMaterial3D_frcyg"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 34,
+"vertex_data": PackedByteArray("ogsAAKnq/7///wAA////v1z0AACp6v+/AAAAAP///7///wAAAAD/v1z0AABVFf+/AAAAAAAA/7+iCwAAVRX/vwAAAAD///+/ogsAAKnq/7//////AAD/vwAA//////+/AAD//wAA/7//////////vwAAAAD//1TVAAD//wAAVNUAAP////9U1QAAAAAAAFTVAAAAAAAA////////AAD//wAA//8AAP////8AAAAA/////wAAAABU1f///////1TV/////wAAVNX//wAA//9U1f//AAD///+/AAD//////7//////////vwAAAAD///+/XPT//6nq//+iC///qer//1z0//9VFf//ogv//1UV//8AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/////f////3////9/////f1TVVNVU1VTVVNVU1VTVVNX/v/+//7//v/+//7//v/+/qiqqKqoqqiqqKqoqqiqqKv//////////////////////f/+//3//v/9//7//f/+/")
+}, {
+"aabb": AABB(-2, -0.25, -1, 4, 0.25, 2),
+"attribute_data": PackedByteArray("/x//f/9f/z//X/9//x//P/9f/z//fwAA/3//P/9fAAD/X/9//3//P/9//3//X/8//1//v/9//3//f/+//1//f/9f////f/+//3////9f/78="),
+"format": 34896613399,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEA"),
+"material": SubResource("StandardMaterial3D_w2op5"),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("AAAAAAAA/7///wAA////v///AAAAAP+/AAAAAP///7///wAA////vwAA//////+//////////78AAAAA////v///AAAAAFTV////////VNX/////AABU1f//AAD//1TVAAAAAAAA////////AAD//wAA//8AAP////8AAAAA//8AAAAA//9U1QAA//8AAFTVAAD/////VNUAAAAAAABU1QAA/38AAP9/AAD/fwAA/3//////////////////////qiqqKqoqqiqqKqoqqiqqKv+//7//v/+//7//v/+//79U1VTVVNVU1VTVVNVU1VTV")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_laf2i")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u84ln"]
+emission_enabled = true
+emission = Color(1, 1, 0.80784315, 1)
+emission_energy_multiplier = 1.5
+
+[node name="CeilingLight" type="Node3D" unique_id=1227570387]
+
+[node name="CeilingLight" type="Node3D" parent="." unique_id=302242120]
+transform = Transform3D(0.8, 0, 0, 0, 0.4, 0, 0, 0, 0.8, 0, 0, 0)
+
+[node name="Cube" type="MeshInstance3D" parent="CeilingLight" unique_id=1802702278]
+mesh = SubResource("ArrayMesh_impxp")
+surface_material_override/1 = SubResource("StandardMaterial3D_u84ln")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1859665510]
+omni_range = 16.0
