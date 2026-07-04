@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://ci0qns6q57pf1"
+
+[deps]
+
+files=["res://Data/activities.combat sports.translation"]
+
+source_file="res://Data/activities.csv"
+dest_files=["res://Data/activities.combat sports.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

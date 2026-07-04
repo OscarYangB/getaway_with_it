@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://c4loijwkv6p6h"
+
+[deps]
+
+files=["res://Data/money.stock market.translation"]
+
+source_file="res://Data/money.csv"
+dest_files=["res://Data/money.stock market.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true
