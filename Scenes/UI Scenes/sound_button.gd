@@ -6,6 +6,5 @@ extends Button
 func _on_pressed():
 	pressed_sound.play()
 
-
 func _on_mouse_entered():
 	hover_sound.play()

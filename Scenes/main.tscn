@@ -115,8 +115,8 @@ arrows = Dictionary[int, NodePath]({
 2: NodePath("../UP"),
 3: NodePath("../DOWN")
 })
-dialogNode = NodePath("../Dialog")
 worldEnvironment = NodePath("../WorldEnvironment")
+dialogNode = NodePath("../Dialog")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=653191799]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5807815, -0.42358935)
@@ -269,41 +269,6 @@ theme_override_fonts/font = ExtResource("6_21xkr")
 theme_override_font_sizes/font_size = 21
 text = "What's your budget?"
 alignment = 0
-
-[node name="UP" type="TextureRect" parent="." unique_id=1534078190]
-offset_left = 557.0
-offset_top = -3.0
-offset_right = 657.0
-offset_bottom = 97.0
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("3_8gbba")
-
-[node name="DOWN" type="TextureRect" parent="." unique_id=1638131947]
-offset_left = 597.0
-offset_top = 649.0
-offset_right = 697.0
-offset_bottom = 749.0
-rotation = 3.1415927
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("3_8gbba")
-
-[node name="LEFT" type="TextureRect" parent="." unique_id=460954088]
-offset_left = 6.0
-offset_top = 324.0
-offset_right = 106.0
-offset_bottom = 424.0
-rotation = -1.6109389
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("3_8gbba")
-
-[node name="RIGHT" type="TextureRect" parent="." unique_id=1236221900]
-offset_left = 1148.0
-offset_top = 274.0
-offset_right = 1248.0
-offset_bottom = 374.0
-rotation = 1.6109389
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("3_8gbba")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=1256203175 node_paths=PackedStringArray("mesh")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.444, 0.95, 3.0103402)

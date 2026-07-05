@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://clbbkviktx2q0" path="res://Scenes/UI Scenes/main_menu.gd" id="1_pqtna"]
 [ext_resource type="PackedScene" uid="uid://06adm5eb4it6" path="res://Scenes/UI Scenes/SoundButton.tscn" id="2_y7bq6"]
 [ext_resource type="PackedScene" uid="uid://7l6uukd6qtib" path="res://Meshes/Travel Agency Building.glb" id="3_y7bq6"]
+[ext_resource type="Script" uid="uid://cuh7qm5xxm1hc" path="res://Code/MenuCameraController.cs" id="4_qvpnb"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_tg3ej"]
 size = Vector2(1000, 1000)
@@ -116,7 +117,8 @@ shadow_enabled = true
 [node name="Travel Agency Building" parent="Node3D" unique_id=1348000829 instance=ExtResource("3_y7bq6")]
 
 [node name="Camera3D" type="Camera3D" parent="Node3D" unique_id=824207788]
-transform = Transform3D(-0.9177705, 0.07136415, 0.39064628, 0.02497741, 0.99214596, -0.12256641, -0.39632502, -0.102730505, -0.9123447, 13.268638, 3.2360482, -27.123545)
+transform = Transform3D(-0.91777045, 0.07136415, 0.39064637, 0.024977408, 0.99214596, -0.12256642, -0.39632508, -0.102730505, -0.91234463, 13.268638, 3.2360482, -27.123545)
+script = ExtResource("4_qvpnb")
 
 [connection signal="pressed" from="Control/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
