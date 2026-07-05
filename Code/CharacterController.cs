@@ -48,6 +48,8 @@ public partial class CharacterController : Node
 
 	List<string> themes = [];
 
+	[Export] NodePath passportLabel;
+
 	bool isCriminal;
 	Dialog introLine;
 	Dialog whereLine;
@@ -214,7 +216,8 @@ public partial class CharacterController : Node
 		GetNode<Label>(label).Text = name;
 		suspectedCriminal = false;
 		name = possibleNames[random.Next(possibleNames.Count)];
-		Debug.WriteLine(name);
+		GetNode<Label>(passportLabel).Text = name;
+		//Debug.WriteLine(name);
 	}
 
 	void initNames()

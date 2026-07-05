@@ -595,6 +595,7 @@ activitiesFile = "uid://ci0qns6q57pf1"
 moneyFile = "uid://c4loijwkv6p6h"
 firstNameFile = "uid://cndkhgj7htx15"
 lastNameFile = "uid://ypf7i2uug8sh"
+passportLabel = NodePath("../PassportParent/Passport/PageRight/Sprite3D/SubViewport/Label")
 speechLabel = NodePath("../Dialog/Speaker")
 whereButton = NodePath("../Dialog/WhereButton")
 whoButton = NodePath("../Dialog/WhoButton")
