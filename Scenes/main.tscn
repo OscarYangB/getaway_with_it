@@ -38,6 +38,7 @@
 [ext_resource type="Texture2D" uid="uid://ce2cbtykotufc" path="res://Textures/postcard_1.png" id="31_jwpg7"]
 [ext_resource type="Script" uid="uid://gghfrdarrq0x" path="res://Code/BellController.cs" id="31_kltya"]
 [ext_resource type="Texture2D" uid="uid://c6ihfjlxod136" path="res://Textures/postcard_2.png" id="32_k2e45"]
+[ext_resource type="Script" uid="uid://c26h4uc43u2rg" path="res://Code/FakeMachine.cs" id="36_o1aky"]
 [ext_resource type="PackedScene" uid="uid://m4gnolof131v" path="res://Meshes/Passport.glb" id="39_536cc"]
 [ext_resource type="Texture2D" uid="uid://btxm7lc6ftoib" path="res://Textures/passport2.png" id="40_8cuat"]
 [ext_resource type="Texture2D" uid="uid://1ar6d1fouvsd" path="res://Textures/passport1.png" id="40_aqgau"]
@@ -117,6 +118,9 @@ viewport_path = NodePath("BulletinBoard/Postcard1/SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_536cc"]
 viewport_path = NodePath("BulletinBoard/Postcard2/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_naqv4"]
+viewport_path = NodePath("IDFaker/Sprite3D/SubViewport")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_2tu2c"]
 radius = 0.385
@@ -498,6 +502,7 @@ themeLabel = NodePath("../BulletinBoard/ThemeList/SubViewport/Label")
 characterTextures = Array[Texture2D]([ExtResource("25_neg2b"), ExtResource("26_r33sp"), ExtResource("8_344ge")])
 sprite3D = NodePath("../CharacterSprite")
 postcards = Array[NodePath]([NodePath("../BulletinBoard/Postcard1"), NodePath("../BulletinBoard/Postcard2")])
+label = NodePath("../PassportParent/Passport/PageRight/Sprite3D/SubViewport/Label")
 
 [node name="BulletinBoard" type="Sprite3D" parent="." unique_id=567186554]
 transform = Transform3D(-7.86805e-09, 0, -0.18, 0, 0.18, 0, 0.18, 0, -7.86805e-09, 5.729937, 3.2825854, 4.232732)
@@ -594,6 +599,38 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.7740567, 0.819654, 2.
 
 [node name="IDFaker" parent="." unique_id=2009629827 instance=ExtResource("19_fevyy")]
 transform = Transform3D(-0.25980762, 0, 0.14999999, 0, 0.3, 0, -0.14999999, 0, -0.25980762, 1.3423674, 0.81136966, 2.4775343)
+script = ExtResource("36_o1aky")
+passport = NodePath("../PassportParent")
+passportLabel = NodePath("../PassportParent/Passport/PageRight/Sprite3D/SubViewport/Label")
+distance = 1.0
+label = NodePath("Sprite3D/SubViewport/Label")
+
+[node name="Sprite3D" type="Sprite3D" parent="IDFaker" unique_id=1472975731]
+transform = Transform3D(-0.1, 0, -8.742278e-09, 0, 0.1, 0, 8.742278e-09, 0, -0.1, -0.100657955, 2.3751893, -0.9705909)
+texture = SubResource("ViewportTexture_naqv4")
+
+[node name="SubViewport" type="SubViewport" parent="IDFaker/Sprite3D" unique_id=1361701350]
+size = Vector2i(800, 512)
+
+[node name="ColorRect" type="ColorRect" parent="IDFaker/Sprite3D/SubViewport" unique_id=2083150431]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="IDFaker/Sprite3D/SubViewport" unique_id=2078995898]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_21xkr")
+theme_override_font_sizes/font_size = 120
+text = "testing testing 123"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BellParent" type="StaticBody3D" parent="." unique_id=1919139040 node_paths=PackedStringArray("mesh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.842628, 1.1177682, 1.5115871)
@@ -617,7 +654,7 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="PassportParent" type="StaticBody3D" parent="." unique_id=1902240751]
-transform = Transform3D(0.05209447, 0, -0.29544234, 0, 0.3, 0, 0.29544234, 0, 0.05209447, -1.1052961, 0.83546925, 2.769595)
+transform = Transform3D(0.05209447, 0, -0.29544234, 0, 0.3, 0, 0.29544234, 0, 0.05209447, 0, 0.835, 2.904)
 script = ExtResource("7_6bp64")
 coverLeft = NodePath("Passport/CoverLeft")
 pageLeft = NodePath("Passport/PageLeft")

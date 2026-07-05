@@ -73,6 +73,11 @@ public partial class CameraController : Camera3D
 
 	public override void _Input(InputEvent @event)
 	{
+		if (disableCameraMovement)
+		{
+			return;
+		}
+
 		if (@event.IsActionPressed("up"))
 		{
 			MoveCamera(CameraDirection.UP);

@@ -39,15 +39,20 @@ public partial class Interactable : StaticBody3D
 	{
 	}
 
+	public void Drop()
+	{
+		isLifted = false;
+		goalOutline = 0.0f;
+		Input.MouseMode = Input.MouseModeEnum.Visible;
+		CameraController.singleton.EnableMovement();
+		isOpen = false;
+	}
+
 	public override void _Process(double delta)
 	{
 		if (!Input.IsMouseButtonPressed(MouseButton.Left) && isLifted)
 		{
-			isLifted = false;
-			goalOutline = 0.0f;
-			Input.MouseMode = Input.MouseModeEnum.Visible;
-			CameraController.singleton.EnableMovement();
-			isOpen = false;
+			Drop();
 		}
 
 		if (isLifted)

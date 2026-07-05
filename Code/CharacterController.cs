@@ -62,6 +62,9 @@ public partial class CharacterController : Node
 	int numberOfCharacters = 0;
 	[Export] Array<NodePath> postcards;
 
+	public string name = "Bob Jiang";
+	[Export] NodePath label;
+
 	void changeSpeech(string speech)
 	{
 		currentLine = speech;
@@ -155,6 +158,7 @@ public partial class CharacterController : Node
 		{
 			GetNode<Sprite3D>(postcards[i]).Visible = numberOfCharacters > ((i + 1) * 3);
 		}
+		GetNode<Label>(label).Text = name;
 	}
 
 	void readDialogFile(string fileName, List<Dialog> dialogList)
