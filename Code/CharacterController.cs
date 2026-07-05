@@ -36,6 +36,10 @@ public partial class CharacterController : Node
 	[Export(PropertyHint.File, "*.csv")] string activitiesFile;
 	[Export(PropertyHint.File, "*.csv")] string moneyFile;
 
+	[Export(PropertyHint.File, "*.csv")] string firstNameFile;
+	[Export(PropertyHint.File, "*.csv")] string lastNameFile;
+	List<string> possibleNames = [];
+
 	List<Dialog> introDialog = [];
 	List<Dialog> whereDialog = [];
 	List<Dialog> whoDialog = [];
@@ -109,9 +113,9 @@ public partial class CharacterController : Node
 		//Debug.WriteLine("Expected Money: " + moneyLine.ID);
 		//Debug.WriteLine("Money: " + moneyIndex);
 		Debug.WriteLine("Correct Money: " + result.correctMoney);
-        Debug.WriteLine("Correct Sus: " + result.correctSus);
+		Debug.WriteLine("Correct Sus: " + result.correctSus);
 
-        results.Add(result);
+		results.Add(result);
 	}
 
 	void changeSpeech(string speech)
@@ -209,7 +213,28 @@ public partial class CharacterController : Node
 		}
 		GetNode<Label>(label).Text = name;
 		suspectedCriminal = false;
-    }
+		name = possibleNames[random.Next(possibleNames.Count)];
+		Debug.WriteLine(name);
+	}
+
+	void initNames()
+	{
+		FileAccess fileFirst = FileAccess.Open(firstNameFile, FileAccess.ModeFlags.Read);
+		string firstText = fileFirst.GetAsText();
+		string[] firsts = firstText.Split("\n");
+
+		FileAccess fileLast = FileAccess.Open(lastNameFile, FileAccess.ModeFlags.Read);
+		string lastText = fileLast.GetAsText();
+		string[] lasts = firstText.Split("\n");
+
+		foreach (string first in firsts)
+		{
+			foreach (string last in lasts)
+			{
+				possibleNames.Add(first.Trim() + " " + last.Trim());
+			}
+		}
+	}
 
 	void readDialogFile(string fileName, List<Dialog> dialogList, bool hasID)
 	{
@@ -243,6 +268,8 @@ public partial class CharacterController : Node
 	public override void _Ready()
 	{
 		instance = this;
+
+		initNames();
 
 		readDialogFile(introFile, introDialog, false);
 		readDialogFile(whereFile, whereDialog, true);
