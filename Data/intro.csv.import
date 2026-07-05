@@ -6,10 +6,7 @@ uid="uid://cpnjinbvn4joa"
 
 [deps]
 
-files=["res://Data/intro.death.translation"]
-
 source_file="res://Data/intro.csv"
-dest_files=["res://Data/intro.death.translation"]
 
 [params]
 

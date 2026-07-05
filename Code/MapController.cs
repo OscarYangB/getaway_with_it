@@ -1,19 +1,25 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Xml.Linq;
 
 public partial class MapController : Node
 {
 	[Export] Texture2D offButtonTexture;
 	[Export] Texture2D onButtonTexture;
+	public static MapController singleton;
+	Location selected = null;
 
-	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		singleton = this;
 		foreach (Node child in GetChildren())
 		{
-			if (child is TextureButton)
+			if (child is Location)
 			{
-				TextureButton button = (TextureButton)child;
+				Location button = (Location)child;
 				button.Pressed += () => ButtonPressed(button.Name);
 			}
 		}
@@ -23,16 +29,26 @@ public partial class MapController : Node
 	{
 		foreach (Node child in GetChildren())
 		{
-			if (child is TextureButton)
+			if (child is Location)
 			{
-				TextureButton button = (TextureButton)child;
-				button.TextureNormal = button.Name == name ? onButtonTexture : offButtonTexture;
+				Location button = (Location)child;
+				bool isSelected = button.Name == name;
+				button.TextureNormal = isSelected ? onButtonTexture : offButtonTexture;
+				if (isSelected)
+				{
+					selected = button;
+				}
 			}
 		}
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	public List<string> GetSelection()
 	{
+		if (selected == null)
+		{
+			return new List<string>();
+		}
+
+		return selected.tags.ToList();
 	}
 }

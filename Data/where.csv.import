@@ -6,10 +6,10 @@ uid="uid://btq7uwumiw6nq"
 
 [deps]
 
-files=["res://Data/where.heat.translation"]
+files=["res://Data/where.hot.translation", "res://Data/where.heat.translation"]
 
 source_file="res://Data/where.csv"
-dest_files=["res://Data/where.heat.translation"]
+dest_files=["res://Data/where.hot.translation", "res://Data/where.heat.translation"]
 
 [params]
 

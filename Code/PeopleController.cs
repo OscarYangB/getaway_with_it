@@ -9,8 +9,16 @@ public partial class PeopleController : Node
 	[Export] NodePath downButton;
 	[Export] NodePath label;
 
+	public static PeopleController singleton;
+
+	public int GetResult()
+	{
+		return count;
+	}
+
 	public override void _Ready()
 	{
+		singleton = this;
 		GetNode<TextureButton>(upButton).Pressed += goUp;
 		GetNode<TextureButton>(downButton).Pressed += goDown;
 		refreshLabel();

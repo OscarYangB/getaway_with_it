@@ -14,10 +14,18 @@ public partial class MoneyController : Node
 	[Export] NodePath button2;
 	[Export] NodePath button3;
 
+	public static MoneyController singleton;
+
 	int moneyIndex = 0;
+
+	public int GetResult()
+	{
+		return moneyIndex;
+	}
 
 	public override void _Ready()
 	{
+		singleton = this;
 		GetNode<TextureButton>(button1).Pressed += () => ButtonPressed(1);
 		GetNode<TextureButton>(button2).Pressed += () => ButtonPressed(2);
 		GetNode<TextureButton>(button3).Pressed += () => ButtonPressed(3);

@@ -8,6 +8,7 @@ using System.Linq;
 struct Dialog
 {
 	public string text;
+	public string ID = "";
 	public Array<String> tags;
 
 	public Dialog()
@@ -15,6 +16,14 @@ struct Dialog
 		tags = [];
 	}
 };
+
+struct Result
+{
+	public bool correctCountry;
+	public bool correctPeople;
+	public bool correctMoney;
+	public bool correctSus;
+}
 
 public partial class CharacterController : Node
 {
@@ -36,11 +45,11 @@ public partial class CharacterController : Node
 	List<string> themes = [];
 
 	bool isCriminal;
-	string introLine;
-	string whereLine;
-	string whoLine;
-	string activitiesLine;
-	string moneyLine;
+	Dialog introLine;
+	Dialog whereLine;
+	Dialog whoLine;
+	Dialog activitiesLine;
+	Dialog moneyLine;
 
 	[Export] NodePath speechLabel;
 	[Export] NodePath whereButton;
@@ -65,6 +74,46 @@ public partial class CharacterController : Node
 	public string name = "Bob Jiang";
 	[Export] NodePath label;
 
+	List<Result> results = [];
+
+	bool suspectedCriminal = false;
+
+	public void EvaluateResult(List<string> countryTags, int numberPeople, int moneyIndex)
+	{
+		Result result = new();
+		result.correctCountry = countryTags.Contains(whereLine.ID);
+		result.correctPeople = numberPeople == whoLine.ID.ToInt();
+
+		if (moneyIndex == 1)
+		{
+			result.correctMoney = moneyLine.ID == "low";
+		}
+		if (moneyIndex == 2)
+		{
+			result.correctMoney = moneyLine.ID == "medium";
+		}
+		if (moneyIndex == 3)
+		{
+			result.correctMoney = moneyLine.ID == "high";
+		}
+		result.correctSus = suspectedCriminal == isCriminal;
+
+		//foreach (string country in countryTags) {
+		//	Debug.WriteLine("Countries: " + country);
+		//}
+		//Debug.WriteLine("Expected Countries: " + whereLine.ID);
+		Debug.WriteLine("Correct Country: " + result.correctCountry);
+		//Debug.WriteLine("Expected People: " + whoLine.ID);
+		//Debug.WriteLine("People: " + numberPeople);
+		Debug.WriteLine("Correct People: " + result.correctPeople);
+		//Debug.WriteLine("Expected Money: " + moneyLine.ID);
+		//Debug.WriteLine("Money: " + moneyIndex);
+		Debug.WriteLine("Correct Money: " + result.correctMoney);
+        Debug.WriteLine("Correct Sus: " + result.correctSus);
+
+        results.Add(result);
+	}
+
 	void changeSpeech(string speech)
 	{
 		currentLine = speech;
@@ -85,7 +134,7 @@ public partial class CharacterController : Node
 			{
 				hasTheme |= themes.Contains(tag);
 			}
-			introLine = introDialog[indexNumber].text;
+			introLine = introDialog[indexNumber];
 			if (shouldHaveThemedTag == hasTheme)
 			{
 				break;
@@ -99,7 +148,7 @@ public partial class CharacterController : Node
 			{
 				hasTheme |= themes.Contains(tag);
 			}
-			whereLine = whereDialog[indexNumber].text;
+			whereLine = whereDialog[indexNumber];
 			if (shouldHaveThemedTag == hasTheme)
 			{
 				break;
@@ -113,7 +162,7 @@ public partial class CharacterController : Node
 			{
 				hasTheme |= themes.Contains(tag);
 			}
-			whoLine = whoDialog[indexNumber].text;
+			whoLine = whoDialog[indexNumber];
 			if (shouldHaveThemedTag == hasTheme)
 			{
 				break;
@@ -127,7 +176,7 @@ public partial class CharacterController : Node
 			{
 				hasTheme |= themes.Contains(tag);
 			}
-			activitiesLine = activitiesDialog[indexNumber].text;
+			activitiesLine = activitiesDialog[indexNumber];
 			if (shouldHaveThemedTag == hasTheme)
 			{
 				break;
@@ -141,7 +190,7 @@ public partial class CharacterController : Node
 			{
 				hasTheme |= themes.Contains(tag);
 			}
-			moneyLine = moneyDialog[indexNumber].text;
+			moneyLine = moneyDialog[indexNumber];
 			if (shouldHaveThemedTag == hasTheme)
 			{
 				break;
@@ -151,7 +200,7 @@ public partial class CharacterController : Node
 		GetNode<Button>(whoButton).Disabled = false;
 		GetNode<Button>(activitiesButton).Disabled = false;
 		GetNode<Button>(moneyButton).Disabled = false;
-		changeSpeech(introLine);
+		changeSpeech(introLine.text);
 		GetNode<Sprite3D>(sprite3D).Texture = characterTextures[random.Next(characterTextures.Count)];
 
 		for (int i = 0; i < postcards.Count; i++)
@@ -159,9 +208,10 @@ public partial class CharacterController : Node
 			GetNode<Sprite3D>(postcards[i]).Visible = numberOfCharacters > ((i + 1) * 3);
 		}
 		GetNode<Label>(label).Text = name;
-	}
+		suspectedCriminal = false;
+    }
 
-	void readDialogFile(string fileName, List<Dialog> dialogList)
+	void readDialogFile(string fileName, List<Dialog> dialogList, bool hasID)
 	{
 		FileAccess file = FileAccess.Open(fileName, FileAccess.ModeFlags.Read);
 		string fileText = file.GetAsText();
@@ -172,6 +222,13 @@ public partial class CharacterController : Node
 			List<string> tags = [.. line.Split(",")];
 			dialog.text = tags[0];
 			tags.RemoveAt(0);
+			if (hasID && tags.Count > 0)
+			{
+				//Debug.WriteLine(dialog.text);
+				dialog.ID = tags[0];
+				//Debug.WriteLine(dialog.ID);
+				tags.RemoveAt(0);
+			}
 			foreach (string tag in tags)
 			{
 				if (!string.IsNullOrWhiteSpace(tag))
@@ -187,11 +244,11 @@ public partial class CharacterController : Node
 	{
 		instance = this;
 
-		readDialogFile(introFile, introDialog);
-		readDialogFile(whereFile, whereDialog);
-		readDialogFile(whoFile, whoDialog);
-		readDialogFile(activitiesFile, activitiesDialog);
-		readDialogFile(moneyFile, moneyDialog);
+		readDialogFile(introFile, introDialog, false);
+		readDialogFile(whereFile, whereDialog, true);
+		readDialogFile(whoFile, whoDialog, true);
+		readDialogFile(activitiesFile, activitiesDialog, false);
+		readDialogFile(moneyFile, moneyDialog, true);
 
 		/*foreach (Dialog dialog in dialogs)
 		{
@@ -217,25 +274,25 @@ public partial class CharacterController : Node
 
 	void WhereButtonPressed()
 	{
-		changeSpeech(whereLine);
+		changeSpeech(whereLine.text);
 		GetNode<Button>(whereButton).Disabled = true;
 	}
 
 	void WhoButtonPressed()
 	{
-		changeSpeech(whoLine);
+		changeSpeech(whoLine.text);
 		GetNode<Button>(whoButton).Disabled = true;
 	}
 
 	void ActivitiesButtonPressed()
 	{
-		changeSpeech(activitiesLine);
+		changeSpeech(activitiesLine.text);
 		GetNode<Button>(activitiesButton).Disabled = true;
 	}
 
 	void MoneyButtonPressed()
 	{
-		changeSpeech(moneyLine);
+		changeSpeech(moneyLine.text);
 		GetNode<Button>(moneyButton).Disabled = true;
 	}
 

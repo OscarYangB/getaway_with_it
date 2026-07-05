@@ -41,6 +41,7 @@ public partial class BellController : StaticBody3D
 				}
 				else if (fade == Fade.OUT)
 				{
+					CharacterController.instance.EvaluateResult(MapController.singleton.GetSelection(), PeopleController.singleton.GetResult(), MoneyController.singleton.GetResult());
 					CharacterController.instance.initCharacter();
 					fade = Fade.IN;
 				}

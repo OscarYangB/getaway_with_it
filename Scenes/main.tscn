@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://d3qt3x3xconsy" path="res://Textures/pin_light.png" id="9_gt3je"]
 [ext_resource type="Script" uid="uid://bgu4fk45anm6v" path="res://Code/CharacterController.cs" id="9_ynf5e"]
 [ext_resource type="Script" uid="uid://x7uxa0ume8bp" path="res://Code/PeopleController.cs" id="10_1w6v2"]
+[ext_resource type="Script" uid="uid://bibkupkrufacl" path="res://Code/Location.cs" id="10_aa8k8"]
 [ext_resource type="Texture2D" uid="uid://c0uxwjl1yy3u6" path="res://Textures/people.png" id="10_gt3je"]
 [ext_resource type="Texture2D" uid="uid://bbvb41ibfkf1k" path="res://Textures/money_off_1.png" id="11_cbgmd"]
 [ext_resource type="Texture2D" uid="uid://tsj6nj76suqk" path="res://Textures/board.jpg" id="11_d1ilt"]
@@ -245,6 +246,8 @@ offset_right = 915.5
 offset_bottom = 578.5
 scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("13_fdnlq")
+script = ExtResource("10_aa8k8")
+tags = Array[String](["any"])
 
 [node name="US" type="TextureButton" parent="Monitor/computer_screen/SubViewport/ViewportParent/Map" unique_id=1694957534]
 layout_mode = 0
@@ -254,6 +257,8 @@ offset_right = 565.5
 offset_bottom = 761.0
 scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("13_fdnlq")
+script = ExtResource("10_aa8k8")
+tags = Array[String](["any", "us"])
 
 [node name="Mexico" type="TextureButton" parent="Monitor/computer_screen/SubViewport/ViewportParent/Map" unique_id=834179408]
 layout_mode = 0
@@ -263,6 +268,8 @@ offset_right = 633.0
 offset_bottom = 943.5
 scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("13_fdnlq")
+script = ExtResource("10_aa8k8")
+tags = Array[String](["any", "hot"])
 
 [node name="Brazil" type="TextureButton" parent="Monitor/computer_screen/SubViewport/ViewportParent/Map" unique_id=1820228132]
 layout_mode = 0
@@ -272,6 +279,8 @@ offset_right = 1248.0
 offset_bottom = 1416.0
 scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("13_fdnlq")
+script = ExtResource("10_aa8k8")
+tags = Array[String](["any", "hot"])
 
 [node name="South Africa" type="TextureButton" parent="Monitor/computer_screen/SubViewport/ViewportParent/Map" unique_id=1252545978]
 layout_mode = 0
@@ -281,6 +290,8 @@ offset_right = 2180.5
 offset_bottom = 1631.0
 scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("13_fdnlq")
+script = ExtResource("10_aa8k8")
+tags = Array[String](["any", "hot"])
 
 [node name="Nigeria" type="TextureButton" parent="Monitor/computer_screen/SubViewport/ViewportParent/Map" unique_id=1408233711]
 layout_mode = 0
@@ -290,6 +301,8 @@ offset_right = 2035.5
 offset_bottom = 1168.5
 scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("13_fdnlq")
+script = ExtResource("10_aa8k8")
+tags = Array[String](["any", "hot"])
 
 [node name="Germany" type="TextureButton" parent="Monitor/computer_screen/SubViewport/ViewportParent/Map" unique_id=503539580]
 layout_mode = 0
@@ -299,6 +312,8 @@ offset_right = 2058.0
 offset_bottom = 553.5
 scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("13_fdnlq")
+script = ExtResource("10_aa8k8")
+tags = Array[String](["any", "germany"])
 
 [node name="China" type="TextureButton" parent="Monitor/computer_screen/SubViewport/ViewportParent/Map" unique_id=1046942532]
 layout_mode = 0
@@ -308,6 +323,8 @@ offset_right = 3220.5
 offset_bottom = 838.5
 scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("13_fdnlq")
+script = ExtResource("10_aa8k8")
+tags = Array[String](["hot", "any"])
 
 [node name="India" type="TextureButton" parent="Monitor/computer_screen/SubViewport/ViewportParent/Map" unique_id=88756749]
 layout_mode = 0
@@ -317,6 +334,85 @@ offset_right = 2860.5
 offset_bottom = 948.5
 scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("13_fdnlq")
+script = ExtResource("10_aa8k8")
+tags = Array[String](["hot", "any"])
+
+[node name="Denmark" type="TextureButton" parent="Monitor/computer_screen/SubViewport/ViewportParent/Map" unique_id=1343151508]
+layout_mode = 0
+offset_left = 1730.0
+offset_top = 265.00003
+offset_right = 1983.0
+offset_bottom = 476.00003
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("13_fdnlq")
+script = ExtResource("10_aa8k8")
+tags = Array[String](["any", "denmark"])
+
+[node name="Japan" type="TextureButton" parent="Monitor/computer_screen/SubViewport/ViewportParent/Map" unique_id=557012769]
+layout_mode = 0
+offset_left = 3275.0
+offset_top = 567.5
+offset_right = 3528.0
+offset_bottom = 778.5
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("13_fdnlq")
+script = ExtResource("10_aa8k8")
+tags = Array[String](["any", "japan"])
+
+[node name="Australia" type="TextureButton" parent="Monitor/computer_screen/SubViewport/ViewportParent/Map" unique_id=532072180]
+layout_mode = 0
+offset_left = 3277.5
+offset_top = 1392.5
+offset_right = 3530.5
+offset_bottom = 1603.5
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("13_fdnlq")
+script = ExtResource("10_aa8k8")
+tags = Array[String](["any", "australia", "hot"])
+
+[node name="London" type="TextureButton" parent="Monitor/computer_screen/SubViewport/ViewportParent/Map" unique_id=1368592152]
+layout_mode = 0
+offset_left = 1615.0
+offset_top = 332.5
+offset_right = 1868.0
+offset_bottom = 543.5
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("13_fdnlq")
+script = ExtResource("10_aa8k8")
+tags = Array[String](["any", "london", "ireland", "paris"])
+
+[node name="Korea" type="TextureButton" parent="Monitor/computer_screen/SubViewport/ViewportParent/Map" unique_id=75314030]
+layout_mode = 0
+offset_left = 3160.0
+offset_top = 537.5
+offset_right = 3413.0
+offset_bottom = 748.5
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("13_fdnlq")
+script = ExtResource("10_aa8k8")
+tags = Array[String](["any", "korea"])
+
+[node name="Macedonia" type="TextureButton" parent="Monitor/computer_screen/SubViewport/ViewportParent/Map" unique_id=421470946]
+layout_mode = 0
+offset_left = 1992.5
+offset_top = 477.5
+offset_right = 2245.5
+offset_bottom = 688.5
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("13_fdnlq")
+script = ExtResource("10_aa8k8")
+tags = Array[String](["any", "macedonia"])
+
+[node name="Turkey" type="TextureButton" parent="Monitor/computer_screen/SubViewport/ViewportParent/Map" unique_id=650373167]
+layout_mode = 0
+offset_left = 2130.0
+offset_top = 547.5
+offset_right = 2383.0
+offset_bottom = 758.5
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("13_fdnlq")
+script = ExtResource("10_aa8k8")
+tags = Array[String](["any", "turkey"])
 
 [node name="People" type="Control" parent="Monitor/computer_screen/SubViewport/ViewportParent" unique_id=1675904707]
 anchors_preset = 0

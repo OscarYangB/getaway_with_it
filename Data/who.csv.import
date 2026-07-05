@@ -6,10 +6,10 @@ uid="uid://bqxp43i07uf56"
 
 [deps]
 
-files=["res://Data/who.fish.translation", "res://Data/who.smelly luggage.translation"]
+files=["res://Data/who.2.translation", "res://Data/who.fish.translation", "res://Data/who.smelly luggage.translation"]
 
 source_file="res://Data/who.csv"
-dest_files=["res://Data/who.fish.translation", "res://Data/who.smelly luggage.translation"]
+dest_files=["res://Data/who.2.translation", "res://Data/who.fish.translation", "res://Data/who.smelly luggage.translation"]
 
 [params]
 
