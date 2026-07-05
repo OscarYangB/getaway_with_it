@@ -39,6 +39,8 @@
 [ext_resource type="Script" uid="uid://gghfrdarrq0x" path="res://Code/BellController.cs" id="31_kltya"]
 [ext_resource type="Texture2D" uid="uid://c6ihfjlxod136" path="res://Textures/postcard_2.png" id="32_k2e45"]
 [ext_resource type="PackedScene" uid="uid://m4gnolof131v" path="res://Meshes/Passport.glb" id="39_536cc"]
+[ext_resource type="Texture2D" uid="uid://btxm7lc6ftoib" path="res://Textures/passport2.png" id="40_8cuat"]
+[ext_resource type="Texture2D" uid="uid://1ar6d1fouvsd" path="res://Textures/passport1.png" id="40_aqgau"]
 
 [sub_resource type="Resource" id="Resource_jjgbg"]
 script = ExtResource("2_bo1nx")
@@ -121,6 +123,12 @@ radius = 0.385
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_536cc"]
 size = Vector3(2, 1, 2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_2a5ln"]
+viewport_path = NodePath("PassportParent/Passport/PageLeft/Sprite3D/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_yuyls"]
+viewport_path = NodePath("PassportParent/Passport/PageRight/Sprite3D/SubViewport")
 
 [node name="Node3D" type="Node3D" unique_id=1658306331]
 
@@ -621,6 +629,55 @@ shape = SubResource("BoxShape3D_536cc")
 
 [node name="Passport" parent="PassportParent" unique_id=1745904877 instance=ExtResource("39_536cc")]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="PassportParent/Passport/PageLeft" parent_id_path=PackedInt32Array(1745904877, 2030131849) index="0" unique_id=1070582559]
+transform = Transform3D(-1.1175871e-08, -0.35000026, -1.5298989e-08, 0, -1.5298998e-08, 0.35000032, -0.35000026, 1.1175871e-08, 6.661338e-16, -0.461421, 0.010000467, 0.025798798)
+texture = SubResource("ViewportTexture_2a5ln")
+
+[node name="SubViewport" type="SubViewport" parent="PassportParent/Passport/PageLeft/Sprite3D" unique_id=776523827]
+size = Vector2i(500, 250)
+
+[node name="ColorRect" type="ColorRect" parent="PassportParent/Passport/PageLeft/Sprite3D/SubViewport" unique_id=1379316874]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.68, 0.6746734, 0.3604, 1)
+
+[node name="TextureRect" type="TextureRect" parent="PassportParent/Passport/PageLeft/Sprite3D/SubViewport" unique_id=849368688]
+offset_right = 500.0
+offset_bottom = 250.0
+texture = ExtResource("40_8cuat")
+
+[node name="Sprite3D" type="Sprite3D" parent="PassportParent/Passport/PageRight" parent_id_path=PackedInt32Array(1745904877, 213848295) index="0" unique_id=706333398]
+transform = Transform3D(-1.4901161e-08, -0.3500001, -1.5298989e-08, 0, -1.529899e-08, 0.35000014, -0.3500001, 1.4901161e-08, 8.881784e-16, 0.42652225, 0.010000467, 0.010583878)
+texture = SubResource("ViewportTexture_yuyls")
+
+[node name="SubViewport" type="SubViewport" parent="PassportParent/Passport/PageRight/Sprite3D" unique_id=2080123074]
+size = Vector2i(500, 250)
+
+[node name="ColorRect" type="ColorRect" parent="PassportParent/Passport/PageRight/Sprite3D/SubViewport" unique_id=1861672095]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.68, 0.6746734, 0.3604, 1)
+
+[node name="TextureRect" type="TextureRect" parent="PassportParent/Passport/PageRight/Sprite3D/SubViewport" unique_id=830770318]
+offset_right = 500.0
+offset_bottom = 250.0
+texture = ExtResource("40_aqgau")
+
+[node name="Label" type="Label" parent="PassportParent/Passport/PageRight/Sprite3D/SubViewport" unique_id=1532289567]
+offset_left = 250.0
+offset_top = 40.0
+offset_right = 376.0
+offset_bottom = 74.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "John Smith"
 
 [editable path="BellParent/Bell"]
 [editable path="PassportParent/Passport"]
