@@ -18,6 +18,8 @@ struct Dialog
 
 public partial class CharacterController : Node
 {
+	public static CharacterController instance;
+
 	String currentDialog;
 	[Export(PropertyHint.File, "*.csv")] string introFile;
 	[Export(PropertyHint.File, "*.csv")] string whereFile;
@@ -61,7 +63,7 @@ public partial class CharacterController : Node
 		characterIndex = 0;
 	}
 
-	void initCharacter()
+	public void initCharacter()
 	{
 		isCriminal = random.Next(2) == 0 ? false : true;
 		bool shouldHaveThemedTag = isCriminal;
@@ -166,6 +168,8 @@ public partial class CharacterController : Node
 
 	public override void _Ready()
 	{
+		instance = this;
+
 		readDialogFile(introFile, introDialog);
 		readDialogFile(whereFile, whereDialog);
 		readDialogFile(whoFile, whoDialog);

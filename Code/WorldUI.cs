@@ -19,7 +19,7 @@ public partial class WorldUI : StaticBody3D
 		Vector3 mouse3D = collider.GlobalTransform.AffineInverse() * eventPosition;
 		Vector2 mouse2D = new Vector2(mouse3D.X, mouse3D.Y);
         mouse2D *= new Vector2(1.0f, -1.0f);
-        Debug.WriteLine(mouse2D);
+        //Debug.WriteLine(mouse2D);
         mouse2D /= scalingVector;
 		mouse2D += Vector2.One;
 		mouse2D /= 2.0f;

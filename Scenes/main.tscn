@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://c18l0httq4b71" path="res://Meshes/Mouse.glb" id="18_fevyy"]
 [ext_resource type="PackedScene" uid="uid://vqb3c6nadspo" path="res://Meshes/IDFaker.glb" id="19_fevyy"]
 [ext_resource type="Texture2D" uid="uid://gq1nq14qyb8y" path="res://Textures/money_on_3.png" id="19_neg2b"]
+[ext_resource type="Script" uid="uid://gghfrdarrq0x" path="res://Code/BellController.cs" id="31_kltya"]
 
 [sub_resource type="Resource" id="Resource_jjgbg"]
 script = ExtResource("2_bo1nx")
@@ -126,6 +127,9 @@ stencil_outline_thickness = 0.053
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_2tu2c"]
 viewport_path = NodePath("BulletinBoard/ThemeList/SubViewport")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2tu2c"]
+radius = 0.385
 
 [node name="Node3D" type="Node3D" unique_id=1658306331]
 
@@ -391,15 +395,6 @@ offset_right = 1265.0
 offset_bottom = 944.0
 texture_normal = ExtResource("13_ueoa1")
 
-[node name="Button" type="Button" parent="Monitor/computer_screen/SubViewport/ViewportParent" unique_id=120021354]
-layout_mode = 0
-offset_left = 1326.0
-offset_top = 769.0
-offset_right = 1794.0
-offset_bottom = 914.0
-theme_override_font_sizes/font_size = 100
-text = "CONFIRM"
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Monitor" unique_id=575972048]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.006949663)
 shape = SubResource("BoxShape3D_qnpof")
@@ -409,7 +404,6 @@ environment = SubResource("Environment_qnpof")
 camera_attributes = SubResource("CameraAttributesPractical_2tu2c")
 
 [node name="Dialog" type="Control" parent="." unique_id=738153025]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_top = -65.0
@@ -553,9 +547,6 @@ offset_bottom = 217.0
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("13_fdnlq")
 
-[node name="Bell" parent="." unique_id=1835060368 instance=ExtResource("14_wsu2k")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -2.074352, 1.1177682, 1.5115871)
-
 [node name="Computer" parent="." unique_id=1199975226 instance=ExtResource("16_k12tt")]
 transform = Transform3D(-0.19318517, 0, 0.051763814, 0, 0.2, 0, -0.051763814, 0, -0.19318517, 3.4291315, -0.49110866, 2.91591)
 
@@ -567,3 +558,26 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.7740567, 0.819654, 2.
 
 [node name="IDFaker" parent="." unique_id=2009629827 instance=ExtResource("19_fevyy")]
 transform = Transform3D(-0.25980762, 0, 0.14999999, 0, 0.3, 0, -0.14999999, 0, -0.25980762, 1.3423674, 0.81136966, 2.4775343)
+
+[node name="BellParent" type="StaticBody3D" parent="." unique_id=1919139040 node_paths=PackedStringArray("mesh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.842628, 1.1177682, 1.5115871)
+script = ExtResource("31_kltya")
+mesh = NodePath("Bell/Pin")
+colorRect = NodePath("../FADE")
+
+[node name="Bell" parent="BellParent" unique_id=1835060368 instance=ExtResource("14_wsu2k")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BellParent" unique_id=858815240]
+shape = SubResource("SphereShape3D_2tu2c")
+
+[node name="FADE" type="ColorRect" parent="." unique_id=1114045065]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[editable path="BellParent/Bell"]
