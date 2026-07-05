@@ -10,6 +10,9 @@
 [ext_resource type="Script" uid="uid://um555hf2ti4b" path="res://Code/Interactable.cs" id="7_6bp64"]
 [ext_resource type="Texture2D" uid="uid://d3bw4sgj6mxu3" path="res://Textures/sunglasses_woman.png" id="8_344ge"]
 [ext_resource type="Script" uid="uid://bgu4fk45anm6v" path="res://Code/CharacterController.cs" id="9_ynf5e"]
+[ext_resource type="Texture2D" uid="uid://tsj6nj76suqk" path="res://Textures/board.jpg" id="11_d1ilt"]
+[ext_resource type="Texture2D" uid="uid://dnelw63bg61te" path="res://Textures/paper.jpg" id="12_6iyac"]
+[ext_resource type="Texture2D" uid="uid://bdyo8ym4ff0ih" path="res://Textures/pin.png" id="13_fdnlq"]
 
 [sub_resource type="Resource" id="Resource_jjgbg"]
 script = ExtResource("2_bo1nx")
@@ -43,7 +46,7 @@ metadata/_custom_type_script = "uid://dk8hk62n8ad4h"
 
 [sub_resource type="Resource" id="Resource_jjvhh"]
 script = ExtResource("2_bo1nx")
-rotation = Vector3(0, 30, 0)
+rotation = Vector3(0, 90, 0)
 transitions = Dictionary[int, int]({
 1: 0
 })
@@ -51,7 +54,7 @@ metadata/_custom_type_script = "uid://dk8hk62n8ad4h"
 
 [sub_resource type="Resource" id="Resource_kry3j"]
 script = ExtResource("2_bo1nx")
-rotation = Vector3(0, -30, 0)
+rotation = Vector3(4, -90, 0)
 transitions = Dictionary[int, int]({
 0: 0
 })
@@ -102,6 +105,9 @@ stencil_color = Color(0.9764706, 0.7490196, 0, 1)
 stencil_outline_thickness = 0.053
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qnpof"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_2tu2c"]
+viewport_path = NodePath("BulletinBoard/ThemeList/SubViewport")
 
 [node name="Node3D" type="Node3D" unique_id=1658306331]
 
@@ -283,7 +289,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_344ge")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=1875758575]
 shape = SubResource("SphereShape3D_qnpof")
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=892915685]
+[node name="CharacterSprite" type="Sprite3D" parent="." unique_id=892915685]
 transform = Transform3D(0.17, 0, 0, 0, 0.17, 0, 0, 0, 0.17, 0, 3.0536077, -0.18091929)
 texture = ExtResource("8_344ge")
 
@@ -299,3 +305,41 @@ whereButton = NodePath("../Dialog/WhereButton")
 whoButton = NodePath("../Dialog/WhoButton")
 activitiesButton = NodePath("../Dialog/ActivitiesButton")
 moneyButton = NodePath("../Dialog/MoneyButton")
+themeLabel = NodePath("../BulletinBoard/ThemeList/SubViewport/Label")
+
+[node name="BulletinBoard" type="Sprite3D" parent="." unique_id=567186554]
+transform = Transform3D(-7.86805e-09, 0, -0.18, 0, 0.18, 0, 0.18, 0, -7.86805e-09, 5.729937, 3.2825854, 4.232732)
+modulate = Color(0.8845482, 0.92160153, 0.91259676, 1)
+texture = ExtResource("11_d1ilt")
+
+[node name="ThemeList" type="Sprite3D" parent="BulletinBoard" unique_id=1845728990]
+transform = Transform3D(2, 0, 6.3948846e-14, 0, 2, 0, -6.3948846e-14, 0, 2, 7.384754, -2.47793, 1.3903618)
+texture = SubResource("ViewportTexture_2tu2c")
+
+[node name="SubViewport" type="SubViewport" parent="BulletinBoard/ThemeList" unique_id=2093437226]
+size = Vector2i(300, 400)
+
+[node name="Paper" type="TextureRect" parent="BulletinBoard/ThemeList/SubViewport" unique_id=475889667]
+texture_filter = 4
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(10, 10)
+texture = ExtResource("12_6iyac")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="BulletinBoard/ThemeList/SubViewport" unique_id=883335671]
+offset_left = 46.96
+offset_top = 33.705
+offset_right = 157.96002
+offset_bottom = 56.705017
+theme_override_colors/font_color = Color(0.15727392, 0.15727395, 0.15727395, 1)
+theme_override_font_sizes/font_size = 24
+text = "testing testing"
+
+[node name="Pin" type="TextureRect" parent="BulletinBoard/ThemeList/SubViewport" unique_id=1675390211]
+offset_left = 120.0
+offset_top = 6.0
+offset_right = 373.00055
+offset_bottom = 217.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("13_fdnlq")

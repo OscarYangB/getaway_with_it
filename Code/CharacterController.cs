@@ -50,6 +50,8 @@ public partial class CharacterController : Node
 	float lineTimer = 0.0f;
 	float lineAnimationDelay = 0.03f;
 
+	[Export] NodePath themeLabel;
+
 	Random random = new();
 
 	void changeSpeech(string speech)
@@ -239,9 +241,14 @@ public partial class CharacterController : Node
 			randomTags.Add(uniqueTags.ElementAt(random.Next(uniqueTags.Count)));
 		}
 		themes.AddRange(randomTags);
-		foreach (string tag in themes)
+		/*foreach (string tag in themes)
 		{
 			Debug.WriteLine("Tag:" + tag);
+		}*/
+		GetNode<Label>(themeLabel).Text = "";
+		foreach (string tag in themes)
+		{
+			GetNode<Label>(themeLabel).Text += tag + "\n";
 		}
 	}
 
