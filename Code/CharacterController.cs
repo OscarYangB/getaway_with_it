@@ -54,6 +54,9 @@ public partial class CharacterController : Node
 
 	[Export] NodePath themeLabel;
 
+	[Export] Array<Texture2D> characterTextures;
+	[Export] NodePath sprite3D;
+
 	Random random = new();
 
 	void changeSpeech(string speech)
@@ -142,6 +145,7 @@ public partial class CharacterController : Node
 		GetNode<Button>(activitiesButton).Disabled = false;
 		GetNode<Button>(moneyButton).Disabled = false;
 		changeSpeech(introLine);
+		GetNode<Sprite3D>(sprite3D).Texture = characterTextures[random.Next(characterTextures.Count)];
 	}
 
 	void readDialogFile(string fileName, List<Dialog> dialogList)

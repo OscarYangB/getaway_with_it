@@ -86,19 +86,29 @@ anchor_bottom = 1.0
 offset_left = 35.0
 offset_right = 184.0
 grow_vertical = 2
+offset_transform_enabled = true
 theme_override_constants/separation = 20
 alignment = 1
 
 [node name="StartButton" parent="Control/VBoxContainer" unique_id=1278998696 instance=ExtResource("2_y7bq6")]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 24
 text = "START"
 
 [node name="SettingsButton" parent="Control/VBoxContainer" unique_id=249214895 instance=ExtResource("2_y7bq6")]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 24
 text = "SETTINGS"
 
 [node name="QuitButton" parent="Control/VBoxContainer" unique_id=1009383545 instance=ExtResource("2_y7bq6")]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 24
 text = "QUIT"
 
 [node name="Node3D" type="Node3D" parent="." unique_id=1081510629]

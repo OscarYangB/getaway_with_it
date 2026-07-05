@@ -31,6 +31,8 @@
 [ext_resource type="PackedScene" uid="uid://c18l0httq4b71" path="res://Meshes/Mouse.glb" id="18_fevyy"]
 [ext_resource type="PackedScene" uid="uid://vqb3c6nadspo" path="res://Meshes/IDFaker.glb" id="19_fevyy"]
 [ext_resource type="Texture2D" uid="uid://gq1nq14qyb8y" path="res://Textures/money_on_3.png" id="19_neg2b"]
+[ext_resource type="Texture2D" uid="uid://ce2ek42wjmmst" path="res://Textures/mafia_man.png" id="25_neg2b"]
+[ext_resource type="Texture2D" uid="uid://c8h35pro2lajv" path="res://Textures/sketch_man.png" id="26_r33sp"]
 [ext_resource type="Script" uid="uid://gghfrdarrq0x" path="res://Code/BellController.cs" id="31_kltya"]
 
 [sub_resource type="Resource" id="Resource_jjgbg"]
@@ -509,6 +511,8 @@ whoButton = NodePath("../Dialog/WhoButton")
 activitiesButton = NodePath("../Dialog/ActivitiesButton")
 moneyButton = NodePath("../Dialog/MoneyButton")
 themeLabel = NodePath("../BulletinBoard/ThemeList/SubViewport/Label")
+characterTextures = Array[Texture2D]([ExtResource("25_neg2b"), ExtResource("26_r33sp"), ExtResource("8_344ge")])
+sprite3D = NodePath("../CharacterSprite")
 
 [node name="BulletinBoard" type="Sprite3D" parent="." unique_id=567186554]
 transform = Transform3D(-7.86805e-09, 0, -0.18, 0, 0.18, 0, 0.18, 0, -7.86805e-09, 5.729937, 3.2825854, 4.232732)

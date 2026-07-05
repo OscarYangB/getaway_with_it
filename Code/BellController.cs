@@ -36,10 +36,12 @@ public partial class BellController : StaticBody3D
 				fadeProgress -= 1.0f;
 				if (fade == Fade.IN)
 				{
-					CharacterController.instance.initCharacter();
 					fade = Fade.NONE;
-				} else if (fade == Fade.OUT)
+					GetNode<ColorRect>(colorRect).MouseFilter = Control.MouseFilterEnum.Ignore;
+				}
+				else if (fade == Fade.OUT)
 				{
+					CharacterController.instance.initCharacter();
 					fade = Fade.IN;
 				}
 			}
@@ -71,6 +73,7 @@ public partial class BellController : StaticBody3D
 	void changeCharacter()
 	{
 		fade = Fade.OUT;
+		GetNode<ColorRect>(colorRect).MouseFilter = Control.MouseFilterEnum.Stop;
 	}
 
 	public override void _InputEvent(Camera3D camera, InputEvent @event, Vector3 eventPosition, Vector3 normal, int shapeIdx)
