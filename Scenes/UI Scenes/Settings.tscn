@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://br6r008h0odf2"]
+
+[ext_resource type="Theme" uid="uid://gwo7oafvlnko" path="res://Scenes/UI Scenes/ui_theme.tres" id="1_rqyy0"]
+[ext_resource type="Script" uid="uid://8m3c3o1eujvm" path="res://Scenes/UI Scenes/settings.gd" id="1_sc724"]
+[ext_resource type="PackedScene" uid="uid://06adm5eb4it6" path="res://Scenes/UI Scenes/SoundButton.tscn" id="3_0y26g"]
+
+[node name="Settings" type="Node" unique_id=409754677]
+process_mode = 3
+script = ExtResource("1_sc724")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1636800779]
+layer = 100
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=274782421]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control" unique_id=1611051223]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control" unique_id=1399462422]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 29
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer" unique_id=123384884]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/VBoxContainer" unique_id=656283090]
+layout_mode = 2
+theme = ExtResource("1_rqyy0")
+text = "MASTER VOLUME"
+
+[node name="MasterVolumeSlider" type="HSlider" parent="CanvasLayer/Control/VBoxContainer/VBoxContainer" unique_id=2022043130]
+layout_mode = 2
+theme = ExtResource("1_rqyy0")
+max_value = 2.0
+step = 0.01
+value = 1.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer" unique_id=1462806709]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/VBoxContainer2" unique_id=412329562]
+layout_mode = 2
+theme = ExtResource("1_rqyy0")
+text = "MUSIC VOLUME"
+
+[node name="MusicVolumeSlider" type="HSlider" parent="CanvasLayer/Control/VBoxContainer/VBoxContainer2" unique_id=2018187366]
+layout_mode = 2
+theme = ExtResource("1_rqyy0")
+max_value = 2.0
+step = 0.01
+value = 1.0
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer" unique_id=1801576276]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/VBoxContainer3" unique_id=1522976930]
+layout_mode = 2
+theme = ExtResource("1_rqyy0")
+text = "SFX VOLUME"
+
+[node name="SFXVolumeSlider" type="HSlider" parent="CanvasLayer/Control/VBoxContainer/VBoxContainer3" unique_id=7670670]
+layout_mode = 2
+theme = ExtResource("1_rqyy0")
+max_value = 2.0
+step = 0.01
+value = 1.0
+
+[node name="BackButton" parent="CanvasLayer/Control/VBoxContainer" unique_id=1278998696 instance=ExtResource("3_0y26g")]
+layout_mode = 2
+text = "BACK"
+
+[connection signal="value_changed" from="CanvasLayer/Control/VBoxContainer/VBoxContainer/MasterVolumeSlider" to="." method="_on_master_volume_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Control/VBoxContainer/VBoxContainer2/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Control/VBoxContainer/VBoxContainer3/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
