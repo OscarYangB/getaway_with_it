@@ -38,6 +38,7 @@
 [ext_resource type="Texture2D" uid="uid://ce2cbtykotufc" path="res://Textures/postcard_1.png" id="31_jwpg7"]
 [ext_resource type="Script" uid="uid://gghfrdarrq0x" path="res://Code/BellController.cs" id="31_kltya"]
 [ext_resource type="Texture2D" uid="uid://c6ihfjlxod136" path="res://Textures/postcard_2.png" id="32_k2e45"]
+[ext_resource type="Texture2D" uid="uid://djpevi6vumvjh" path="res://Textures/postcard_3.png" id="32_kwxat"]
 [ext_resource type="Script" uid="uid://c26h4uc43u2rg" path="res://Code/FakeMachine.cs" id="36_o1aky"]
 [ext_resource type="PackedScene" uid="uid://m4gnolof131v" path="res://Meshes/Passport.glb" id="39_536cc"]
 [ext_resource type="Texture2D" uid="uid://btxm7lc6ftoib" path="res://Textures/passport2.png" id="40_8cuat"]
@@ -118,6 +119,9 @@ viewport_path = NodePath("BulletinBoard/Postcard1/SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_536cc"]
 viewport_path = NodePath("BulletinBoard/Postcard2/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_aa8k8"]
+viewport_path = NodePath("BulletinBoard/Postcard3/SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_naqv4"]
 viewport_path = NodePath("IDFaker/Sprite3D/SubViewport")
@@ -501,7 +505,7 @@ moneyButton = NodePath("../Dialog/MoneyButton")
 themeLabel = NodePath("../BulletinBoard/ThemeList/SubViewport/Label")
 characterTextures = Array[Texture2D]([ExtResource("25_neg2b"), ExtResource("26_r33sp"), ExtResource("8_344ge")])
 sprite3D = NodePath("../CharacterSprite")
-postcards = Array[NodePath]([NodePath("../BulletinBoard/Postcard1"), NodePath("../BulletinBoard/Postcard2")])
+postcards = Array[NodePath]([NodePath("../BulletinBoard/Postcard1"), NodePath("../BulletinBoard/Postcard2"), NodePath("../BulletinBoard/Postcard3")])
 label = NodePath("../PassportParent/Passport/PageRight/Sprite3D/SubViewport/Label")
 
 [node name="BulletinBoard" type="Sprite3D" parent="." unique_id=567186554]
@@ -581,6 +585,29 @@ texture = ExtResource("32_k2e45")
 expand_mode = 1
 
 [node name="Pin" type="TextureRect" parent="BulletinBoard/Postcard2/SubViewport" unique_id=1193121666]
+offset_left = 120.0
+offset_top = 6.0
+offset_right = 373.00055
+offset_bottom = 217.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("13_fdnlq")
+
+[node name="Postcard3" type="Sprite3D" parent="BulletinBoard" unique_id=731890399]
+transform = Transform3D(2, 0, 6.3948846e-14, 0, 2, 0, -6.3948846e-14, 0, 2, -1.5090771, -6.9512477, 1.3903713)
+texture = SubResource("ViewportTexture_aa8k8")
+
+[node name="SubViewport" type="SubViewport" parent="BulletinBoard/Postcard3" unique_id=31867222]
+size = Vector2i(300, 400)
+
+[node name="Postcard" type="TextureRect" parent="BulletinBoard/Postcard3/SubViewport" unique_id=2016047263]
+texture_filter = 4
+offset_right = 30.0
+offset_bottom = 40.0
+scale = Vector2(10, 10)
+texture = ExtResource("32_kwxat")
+expand_mode = 1
+
+[node name="Pin" type="TextureRect" parent="BulletinBoard/Postcard3/SubViewport" unique_id=163203932]
 offset_left = 120.0
 offset_top = 6.0
 offset_right = 373.00055
