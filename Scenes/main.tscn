@@ -13,19 +13,24 @@
 [ext_resource type="Texture2D" uid="uid://d3bw4sgj6mxu3" path="res://Textures/sunglasses_woman.png" id="8_344ge"]
 [ext_resource type="Texture2D" uid="uid://d3qt3x3xconsy" path="res://Textures/pin_light.png" id="9_gt3je"]
 [ext_resource type="Script" uid="uid://bgu4fk45anm6v" path="res://Code/CharacterController.cs" id="9_ynf5e"]
+[ext_resource type="Script" uid="uid://x7uxa0ume8bp" path="res://Code/PeopleController.cs" id="10_1w6v2"]
 [ext_resource type="Texture2D" uid="uid://c0uxwjl1yy3u6" path="res://Textures/people.png" id="10_gt3je"]
 [ext_resource type="Texture2D" uid="uid://bbvb41ibfkf1k" path="res://Textures/money_off_1.png" id="11_cbgmd"]
 [ext_resource type="Texture2D" uid="uid://tsj6nj76suqk" path="res://Textures/board.jpg" id="11_d1ilt"]
 [ext_resource type="Texture2D" uid="uid://bt6y74ym2dsib" path="res://Textures/money_off_2.png" id="12_1w6v2"]
 [ext_resource type="Texture2D" uid="uid://dnelw63bg61te" path="res://Textures/paper.jpg" id="12_6iyac"]
 [ext_resource type="Texture2D" uid="uid://bdyo8ym4ff0ih" path="res://Textures/pin.png" id="13_fdnlq"]
+[ext_resource type="Script" uid="uid://cxikia44suq4y" path="res://Code/MoneyController.cs" id="13_hpc6h"]
 [ext_resource type="Texture2D" uid="uid://ddssqbhxa1v5v" path="res://Textures/money_off_3.png" id="13_ueoa1"]
 [ext_resource type="PackedScene" uid="uid://ctf0pe018mfi8" path="res://Meshes/Bell.glb" id="14_wsu2k"]
 [ext_resource type="PackedScene" uid="uid://30ycca6gy4o7" path="res://Meshes/Monitor.glb" id="15_k12tt"]
+[ext_resource type="Texture2D" uid="uid://baucuyp7nkou4" path="res://Textures/money_on_1.png" id="15_kltya"]
 [ext_resource type="PackedScene" uid="uid://bw7c5ffxvxmsy" path="res://Meshes/Computer.glb" id="16_k12tt"]
 [ext_resource type="PackedScene" uid="uid://bjegucjxxvgqn" path="res://Meshes/Keyboard.glb" id="17_b3802"]
+[ext_resource type="Texture2D" uid="uid://dq0n8q71uncev" path="res://Textures/money_on_2.png" id="17_e08e2"]
 [ext_resource type="PackedScene" uid="uid://c18l0httq4b71" path="res://Meshes/Mouse.glb" id="18_fevyy"]
 [ext_resource type="PackedScene" uid="uid://vqb3c6nadspo" path="res://Meshes/IDFaker.glb" id="19_fevyy"]
+[ext_resource type="Texture2D" uid="uid://gq1nq14qyb8y" path="res://Textures/money_on_3.png" id="19_neg2b"]
 
 [sub_resource type="Resource" id="Resource_jjgbg"]
 script = ExtResource("2_bo1nx")
@@ -184,188 +189,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.49)
 [node name="MonitorMesh" parent="." unique_id=583334606 instance=ExtResource("15_k12tt")]
 transform = Transform3D(0.43566936, 0, 0, 0, 0.3598835, 0, 0, 0, 0.41, -0.054813147, 0.7206434, 1.7676969)
 
-[node name="ViewportParent" type="Control" parent="." unique_id=242778727]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Background" type="ColorRect" parent="ViewportParent" unique_id=1901446364]
-layout_mode = 0
-offset_right = 3828.0
-offset_bottom = 2550.0
-color = Color(0.90157217, 0.9609874, 1, 1)
-
-[node name="Map" type="TextureRect" parent="ViewportParent" unique_id=329881523]
-layout_mode = 0
-offset_right = 3840.0
-offset_bottom = 1862.0
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("7_hibaj")
-script = ExtResource("7_ee4r6")
-offButtonTexture = ExtResource("13_fdnlq")
-onButtonTexture = ExtResource("9_gt3je")
-
-[node name="Canada" type="TextureButton" parent="ViewportParent/Map" unique_id=2028561754]
-layout_mode = 0
-offset_left = 662.5
-offset_top = 367.5
-offset_right = 915.5
-offset_bottom = 578.5
-scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("13_fdnlq")
-
-[node name="US" type="TextureButton" parent="ViewportParent/Map" unique_id=1694957534]
-layout_mode = 0
-offset_left = 312.50003
-offset_top = 550.0
-offset_right = 565.5
-offset_bottom = 761.0
-scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("13_fdnlq")
-
-[node name="Mexico" type="TextureButton" parent="ViewportParent/Map" unique_id=834179408]
-layout_mode = 0
-offset_left = 380.0
-offset_top = 732.5
-offset_right = 633.0
-offset_bottom = 943.5
-scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("13_fdnlq")
-
-[node name="Brazil" type="TextureButton" parent="ViewportParent/Map" unique_id=1820228132]
-layout_mode = 0
-offset_left = 994.99994
-offset_top = 1205.0
-offset_right = 1248.0
-offset_bottom = 1416.0
-scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("13_fdnlq")
-
-[node name="South Africa" type="TextureButton" parent="ViewportParent/Map" unique_id=1252545978]
-layout_mode = 0
-offset_left = 1927.5
-offset_top = 1420.0
-offset_right = 2180.5
-offset_bottom = 1631.0
-scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("13_fdnlq")
-
-[node name="Nigeria" type="TextureButton" parent="ViewportParent/Map" unique_id=1408233711]
-layout_mode = 0
-offset_left = 1782.5
-offset_top = 957.5
-offset_right = 2035.5
-offset_bottom = 1168.5
-scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("13_fdnlq")
-
-[node name="Germany" type="TextureButton" parent="ViewportParent/Map" unique_id=503539580]
-layout_mode = 0
-offset_left = 1805.0
-offset_top = 342.5
-offset_right = 2058.0
-offset_bottom = 553.5
-scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("13_fdnlq")
-
-[node name="China" type="TextureButton" parent="ViewportParent/Map" unique_id=1046942532]
-layout_mode = 0
-offset_left = 2967.5
-offset_top = 627.5
-offset_right = 3220.5
-offset_bottom = 838.5
-scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("13_fdnlq")
-
-[node name="India" type="TextureButton" parent="ViewportParent/Map" unique_id=88756749]
-layout_mode = 0
-offset_left = 2607.5
-offset_top = 737.5
-offset_right = 2860.5
-offset_bottom = 948.5
-scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("13_fdnlq")
-
-[node name="People" type="Control" parent="ViewportParent" unique_id=1675904707]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="PeopleUp" type="TextureButton" parent="ViewportParent/People" unique_id=434152022]
-layout_mode = 0
-offset_left = 243.0
-offset_top = 738.0
-offset_right = 343.0
-offset_bottom = 838.0
-texture_normal = ExtResource("3_8gbba")
-
-[node name="PeopleDown" type="TextureButton" parent="ViewportParent/People" unique_id=2470787]
-layout_mode = 0
-offset_left = 340.0
-offset_top = 922.0
-offset_right = 440.0
-offset_bottom = 1022.0
-rotation = 3.1415927
-texture_normal = ExtResource("3_8gbba")
-
-[node name="Label" type="Label" parent="ViewportParent/People" unique_id=59883437]
-layout_mode = 0
-offset_left = 279.0
-offset_top = 794.0
-offset_right = 319.0
-offset_bottom = 863.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 50
-text = "5"
-
-[node name="TextureRect" type="TextureRect" parent="ViewportParent/People" unique_id=2144395381]
-layout_mode = 0
-offset_left = 45.000008
-offset_top = 759.0
-offset_right = 298.0
-offset_bottom = 970.0
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("10_gt3je")
-
-[node name="Money" type="Control" parent="ViewportParent" unique_id=388301405]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TextureRect" type="TextureButton" parent="ViewportParent/Money" unique_id=331173416]
-layout_mode = 0
-offset_left = 501.0
-offset_top = 736.0
-offset_right = 754.0
-offset_bottom = 947.0
-texture_normal = ExtResource("11_cbgmd")
-
-[node name="TextureRect2" type="TextureButton" parent="ViewportParent/Money" unique_id=594236727]
-layout_mode = 0
-offset_left = 745.0
-offset_top = 731.0
-offset_right = 998.0
-offset_bottom = 942.0
-texture_normal = ExtResource("12_1w6v2")
-
-[node name="TextureRect3" type="TextureButton" parent="ViewportParent/Money" unique_id=603298091]
-layout_mode = 0
-offset_left = 1012.0
-offset_top = 733.0
-offset_right = 1265.0
-offset_bottom = 944.0
-texture_normal = ExtResource("13_ueoa1")
-
-[node name="Button" type="Button" parent="ViewportParent" unique_id=120021354]
-layout_mode = 0
-offset_left = 1326.0
-offset_top = 769.0
-offset_right = 1794.0
-offset_bottom = 914.0
-theme_override_font_sizes/font_size = 100
-text = "CONFIRM"
-
 [node name="Monitor" type="StaticBody3D" parent="." unique_id=895672297 node_paths=PackedStringArray("collider", "subviewport")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.067111194, 1.7599044, 2.0711057)
 script = ExtResource("4_jjvhh")
@@ -380,6 +203,202 @@ texture = SubResource("ViewportTexture_qnpof")
 [node name="SubViewport" type="SubViewport" parent="Monitor/computer_screen" unique_id=342199176]
 canvas_item_default_texture_filter = 0
 size = Vector2i(1920, 1080)
+
+[node name="ViewportParent" type="Control" parent="Monitor/computer_screen/SubViewport" unique_id=242778727]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="ColorRect" parent="Monitor/computer_screen/SubViewport/ViewportParent" unique_id=1901446364]
+layout_mode = 0
+offset_right = 3828.0
+offset_bottom = 2550.0
+color = Color(0.90157217, 0.9609874, 1, 1)
+
+[node name="Map" type="TextureRect" parent="Monitor/computer_screen/SubViewport/ViewportParent" unique_id=329881523]
+layout_mode = 0
+offset_right = 3840.0
+offset_bottom = 1862.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_hibaj")
+script = ExtResource("7_ee4r6")
+offButtonTexture = ExtResource("13_fdnlq")
+onButtonTexture = ExtResource("9_gt3je")
+
+[node name="Canada" type="TextureButton" parent="Monitor/computer_screen/SubViewport/ViewportParent/Map" unique_id=2028561754]
+layout_mode = 0
+offset_left = 662.5
+offset_top = 367.5
+offset_right = 915.5
+offset_bottom = 578.5
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("13_fdnlq")
+
+[node name="US" type="TextureButton" parent="Monitor/computer_screen/SubViewport/ViewportParent/Map" unique_id=1694957534]
+layout_mode = 0
+offset_left = 312.50003
+offset_top = 550.0
+offset_right = 565.5
+offset_bottom = 761.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("13_fdnlq")
+
+[node name="Mexico" type="TextureButton" parent="Monitor/computer_screen/SubViewport/ViewportParent/Map" unique_id=834179408]
+layout_mode = 0
+offset_left = 380.0
+offset_top = 732.5
+offset_right = 633.0
+offset_bottom = 943.5
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("13_fdnlq")
+
+[node name="Brazil" type="TextureButton" parent="Monitor/computer_screen/SubViewport/ViewportParent/Map" unique_id=1820228132]
+layout_mode = 0
+offset_left = 994.99994
+offset_top = 1205.0
+offset_right = 1248.0
+offset_bottom = 1416.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("13_fdnlq")
+
+[node name="South Africa" type="TextureButton" parent="Monitor/computer_screen/SubViewport/ViewportParent/Map" unique_id=1252545978]
+layout_mode = 0
+offset_left = 1927.5
+offset_top = 1420.0
+offset_right = 2180.5
+offset_bottom = 1631.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("13_fdnlq")
+
+[node name="Nigeria" type="TextureButton" parent="Monitor/computer_screen/SubViewport/ViewportParent/Map" unique_id=1408233711]
+layout_mode = 0
+offset_left = 1782.5
+offset_top = 957.5
+offset_right = 2035.5
+offset_bottom = 1168.5
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("13_fdnlq")
+
+[node name="Germany" type="TextureButton" parent="Monitor/computer_screen/SubViewport/ViewportParent/Map" unique_id=503539580]
+layout_mode = 0
+offset_left = 1805.0
+offset_top = 342.5
+offset_right = 2058.0
+offset_bottom = 553.5
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("13_fdnlq")
+
+[node name="China" type="TextureButton" parent="Monitor/computer_screen/SubViewport/ViewportParent/Map" unique_id=1046942532]
+layout_mode = 0
+offset_left = 2967.5
+offset_top = 627.5
+offset_right = 3220.5
+offset_bottom = 838.5
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("13_fdnlq")
+
+[node name="India" type="TextureButton" parent="Monitor/computer_screen/SubViewport/ViewportParent/Map" unique_id=88756749]
+layout_mode = 0
+offset_left = 2607.5
+offset_top = 737.5
+offset_right = 2860.5
+offset_bottom = 948.5
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("13_fdnlq")
+
+[node name="People" type="Control" parent="Monitor/computer_screen/SubViewport/ViewportParent" unique_id=1675904707]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("10_1w6v2")
+upButton = NodePath("PeopleUp")
+downButton = NodePath("PeopleDown")
+label = NodePath("Label")
+
+[node name="PeopleUp" type="TextureButton" parent="Monitor/computer_screen/SubViewport/ViewportParent/People" unique_id=434152022]
+layout_mode = 0
+offset_left = 243.0
+offset_top = 738.0
+offset_right = 343.0
+offset_bottom = 838.0
+texture_normal = ExtResource("3_8gbba")
+
+[node name="PeopleDown" type="TextureButton" parent="Monitor/computer_screen/SubViewport/ViewportParent/People" unique_id=2470787]
+layout_mode = 0
+offset_left = 340.0
+offset_top = 922.0
+offset_right = 440.0
+offset_bottom = 1022.0
+rotation = 3.1415927
+texture_normal = ExtResource("3_8gbba")
+
+[node name="Label" type="Label" parent="Monitor/computer_screen/SubViewport/ViewportParent/People" unique_id=59883437]
+layout_mode = 0
+offset_left = 279.0
+offset_top = 794.0
+offset_right = 319.0
+offset_bottom = 863.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "5"
+
+[node name="TextureRect" type="TextureRect" parent="Monitor/computer_screen/SubViewport/ViewportParent/People" unique_id=2144395381]
+layout_mode = 0
+offset_left = 45.000008
+offset_top = 759.0
+offset_right = 298.0
+offset_bottom = 970.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("10_gt3je")
+
+[node name="Money" type="Control" parent="Monitor/computer_screen/SubViewport/ViewportParent" unique_id=388301405]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("13_hpc6h")
+offButtonTexture1 = ExtResource("11_cbgmd")
+onButtonTexture1 = ExtResource("15_kltya")
+offButtonTexture2 = ExtResource("12_1w6v2")
+onButtonTexture2 = ExtResource("17_e08e2")
+offButtonTexture3 = ExtResource("13_ueoa1")
+onButtonTexture3 = ExtResource("19_neg2b")
+button1 = NodePath("TextureRect")
+button2 = NodePath("TextureRect2")
+button3 = NodePath("TextureRect3")
+
+[node name="TextureRect" type="TextureButton" parent="Monitor/computer_screen/SubViewport/ViewportParent/Money" unique_id=331173416]
+layout_mode = 0
+offset_left = 501.0
+offset_top = 736.0
+offset_right = 754.0
+offset_bottom = 947.0
+texture_normal = ExtResource("11_cbgmd")
+
+[node name="TextureRect2" type="TextureButton" parent="Monitor/computer_screen/SubViewport/ViewportParent/Money" unique_id=594236727]
+layout_mode = 0
+offset_left = 745.0
+offset_top = 731.0
+offset_right = 998.0
+offset_bottom = 942.0
+texture_normal = ExtResource("12_1w6v2")
+
+[node name="TextureRect3" type="TextureButton" parent="Monitor/computer_screen/SubViewport/ViewportParent/Money" unique_id=603298091]
+layout_mode = 0
+offset_left = 1012.0
+offset_top = 733.0
+offset_right = 1265.0
+offset_bottom = 944.0
+texture_normal = ExtResource("13_ueoa1")
+
+[node name="Button" type="Button" parent="Monitor/computer_screen/SubViewport/ViewportParent" unique_id=120021354]
+layout_mode = 0
+offset_left = 1326.0
+offset_top = 769.0
+offset_right = 1794.0
+offset_bottom = 914.0
+theme_override_font_sizes/font_size = 100
+text = "CONFIRM"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Monitor" unique_id=575972048]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.006949663)
