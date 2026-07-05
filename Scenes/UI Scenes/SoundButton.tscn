@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://06adm5eb4it6"]
+
+[ext_resource type="Theme" uid="uid://gwo7oafvlnko" path="res://Scenes/UI Scenes/ui_theme.tres" id="1_jji0m"]
+[ext_resource type="Script" uid="uid://6pxmfcrv7xbe" path="res://Scenes/UI Scenes/sound_button.gd" id="1_ww8is"]
+[ext_resource type="AudioStream" uid="uid://dc8ujlg2p4p8t" path="res://Scenes/UI Scenes/button_sound_1.wav" id="2_tat8j"]
+[ext_resource type="AudioStream" uid="uid://mshany8vwsrq" path="res://Scenes/UI Scenes/button_sound_2.wav" id="3_jji0m"]
+
+[node name="SoundButton" type="Button" unique_id=1278998696]
+theme = ExtResource("1_jji0m")
+script = ExtResource("1_ww8is")
+
+[node name="ButtonHover" type="AudioStreamPlayer" parent="." unique_id=233996855]
+stream = ExtResource("2_tat8j")
+bus = &"SFX"
+
+[node name="ButtonPressed" type="AudioStreamPlayer" parent="." unique_id=272848617]
+stream = ExtResource("3_jji0m")
+bus = &"SFX"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

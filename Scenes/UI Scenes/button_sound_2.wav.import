@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://mshany8vwsrq"
+path="res://.godot/imported/button_sound_2.wav-3e01701c4f6a186023e8ee9de11cf4f3.sample"
+
+[deps]
+
+source_file="res://Scenes/UI Scenes/button_sound_2.wav"
+dest_files=["res://.godot/imported/button_sound_2.wav-3e01701c4f6a186023e8ee9de11cf4f3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
