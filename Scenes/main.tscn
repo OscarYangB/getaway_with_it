@@ -13,6 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://tsj6nj76suqk" path="res://Textures/board.jpg" id="11_d1ilt"]
 [ext_resource type="Texture2D" uid="uid://dnelw63bg61te" path="res://Textures/paper.jpg" id="12_6iyac"]
 [ext_resource type="Texture2D" uid="uid://bdyo8ym4ff0ih" path="res://Textures/pin.png" id="13_fdnlq"]
+[ext_resource type="PackedScene" uid="uid://ctf0pe018mfi8" path="res://Meshes/Bell.glb" id="14_wsu2k"]
+[ext_resource type="PackedScene" uid="uid://30ycca6gy4o7" path="res://Meshes/Monitor.glb" id="15_k12tt"]
+[ext_resource type="PackedScene" uid="uid://bw7c5ffxvxmsy" path="res://Meshes/Computer.glb" id="16_k12tt"]
+[ext_resource type="PackedScene" uid="uid://bjegucjxxvgqn" path="res://Meshes/Keyboard.glb" id="17_b3802"]
+[ext_resource type="PackedScene" uid="uid://c18l0httq4b71" path="res://Meshes/Mouse.glb" id="18_fevyy"]
+[ext_resource type="PackedScene" uid="uid://vqb3c6nadspo" path="res://Meshes/IDFaker.glb" id="19_fevyy"]
 
 [sub_resource type="Resource" id="Resource_jjgbg"]
 script = ExtResource("2_bo1nx")
@@ -37,11 +43,11 @@ metadata/_custom_type_script = "uid://dk8hk62n8ad4h"
 
 [sub_resource type="Resource" id="Resource_8gbba"]
 script = ExtResource("2_bo1nx")
-rotation = Vector3(-30, 0, 0)
+rotation = Vector3(-35, 0, 0)
 transitions = Dictionary[int, int]({
 2: 0
 })
-blurFarDistance = 1.1
+blurFarDistance = 1.8
 metadata/_custom_type_script = "uid://dk8hk62n8ad4h"
 
 [sub_resource type="Resource" id="Resource_jjvhh"]
@@ -66,7 +72,7 @@ metadata/_custom_type_script = "uid://dk8hk62n8ad4h"
 albedo_color = Color(1, 0.16470589, 1, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_qnpof"]
-viewport_path = NodePath("StaticBody3D/computer_screen/SubViewport")
+viewport_path = NodePath("Monitor/computer_screen/SubViewport")
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qnpof"]
 
@@ -114,7 +120,7 @@ viewport_path = NodePath("BulletinBoard/ThemeList/SubViewport")
 [node name="Node3D" type="Node3D" unique_id=1658306331]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1724202613 node_paths=PackedStringArray("worldEnvironment")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.77374, 3.700615)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0828638, 3.7854366)
 script = ExtResource("1_jjgbg")
 states = Array[Object]([SubResource("Resource_jjgbg"), SubResource("Resource_bo1nx"), SubResource("Resource_8gbba"), SubResource("Resource_jjvhh"), SubResource("Resource_kry3j")])
 arrows = Dictionary[int, NodePath]({
@@ -170,34 +176,37 @@ texture = ExtResource("3_8gbba")
 [node name="TravelAgencyBuildingInterior" parent="." unique_id=1688673945 instance=ExtResource("4_ynf5e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.49)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=895672297 node_paths=PackedStringArray("collider", "subviewport")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3825402, 2.0081584)
+[node name="MonitorMesh" parent="." unique_id=583334606 instance=ExtResource("15_k12tt")]
+transform = Transform3D(0.43566936, 0, 0, 0, 0.3598835, 0, 0, 0, 0.41, -0.054813147, 0.7206434, 1.7676969)
+
+[node name="Monitor" type="StaticBody3D" parent="." unique_id=895672297 node_paths=PackedStringArray("collider", "subviewport")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.067111194, 1.7599044, 2.0711057)
 script = ExtResource("4_jjvhh")
 collider = NodePath("CollisionShape3D")
 subviewport = NodePath("computer_screen/SubViewport")
 
-[node name="computer_screen" type="Sprite3D" parent="StaticBody3D" unique_id=1332076036]
+[node name="computer_screen" type="Sprite3D" parent="Monitor" unique_id=1332076036]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 alpha_cut = 2
 texture = SubResource("ViewportTexture_qnpof")
 
-[node name="SubViewport" type="SubViewport" parent="StaticBody3D/computer_screen" unique_id=342199176]
+[node name="SubViewport" type="SubViewport" parent="Monitor/computer_screen" unique_id=342199176]
 canvas_item_default_texture_filter = 0
 size = Vector2i(1920, 1080)
 
-[node name="Background" type="TextureRect" parent="StaticBody3D/computer_screen/SubViewport" unique_id=413163920]
+[node name="Background" type="TextureRect" parent="Monitor/computer_screen/SubViewport" unique_id=413163920]
 offset_right = 1000.0
 offset_bottom = 1000.0
 texture = SubResource("PlaceholderTexture2D_qnpof")
 
-[node name="Button" type="Button" parent="StaticBody3D/computer_screen/SubViewport" unique_id=496240279]
+[node name="Button" type="Button" parent="Monitor/computer_screen/SubViewport" unique_id=496240279]
 offset_left = 20.0
 offset_top = 20.0
 offset_right = 139.0
 offset_bottom = 51.0
 text = "this is a computer"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=575972048]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Monitor" unique_id=575972048]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.006949663)
 shape = SubResource("BoxShape3D_qnpof")
 
@@ -295,7 +304,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_344ge")
 shape = SubResource("SphereShape3D_qnpof")
 
 [node name="CharacterSprite" type="Sprite3D" parent="." unique_id=892915685]
-transform = Transform3D(0.17, 0, 0, 0, 0.17, 0, 0, 0, 0.17, 0, 3.4386241, -0.18091929)
+transform = Transform3D(0.17, 0, 0, 0, 0.17, 0, 0, 0, 0.17, 0, 3.6242158, -0.18091929)
 texture = ExtResource("8_344ge")
 
 [node name="Character" type="Node" parent="." unique_id=103323203]
@@ -348,3 +357,18 @@ offset_right = 373.00055
 offset_bottom = 217.0
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("13_fdnlq")
+
+[node name="Bell" parent="." unique_id=1835060368 instance=ExtResource("14_wsu2k")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -2.074352, 1.1177682, 1.5115871)
+
+[node name="Computer" parent="." unique_id=1199975226 instance=ExtResource("16_k12tt")]
+transform = Transform3D(-0.19318517, 0, 0.051763814, 0, 0.2, 0, -0.051763814, 0, -0.19318517, 3.4291315, -0.49110866, 2.91591)
+
+[node name="Keyboard" parent="." unique_id=2138418678 instance=ExtResource("17_b3802")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.07020342, 0.8083191, 2.2676916)
+
+[node name="Mouse2" parent="." unique_id=619437353 instance=ExtResource("18_fevyy")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.7740567, 0.819654, 2.1565335)
+
+[node name="IDFaker" parent="." unique_id=2009629827 instance=ExtResource("19_fevyy")]
+transform = Transform3D(-0.25980762, 0, 0.14999999, 0, 0.3, 0, -0.14999999, 0, -0.25980762, 1.3423674, 0.81136966, 2.4775343)
