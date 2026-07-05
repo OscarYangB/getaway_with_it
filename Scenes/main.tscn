@@ -71,6 +71,7 @@ viewport_path = NodePath("StaticBody3D/computer_screen/SubViewport")
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qnpof"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qnpof"]
+size = Vector3(1.92, 1.08, 0.01)
 
 [sub_resource type="Environment" id="Environment_qnpof"]
 background_color = Color(0.3254902, 0, 0, 1)
@@ -80,6 +81,7 @@ dof_blur_far_enabled = true
 dof_blur_far_distance = 8192.0
 dof_blur_far_transition = 1.0
 dof_blur_near_enabled = true
+dof_blur_near_distance = 0.1
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qnpof"]
 
@@ -112,7 +114,7 @@ viewport_path = NodePath("BulletinBoard/ThemeList/SubViewport")
 [node name="Node3D" type="Node3D" unique_id=1658306331]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1724202613 node_paths=PackedStringArray("worldEnvironment")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5006328, 3.700615)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.77374, 3.700615)
 script = ExtResource("1_jjgbg")
 states = Array[Object]([SubResource("Resource_jjgbg"), SubResource("Resource_bo1nx"), SubResource("Resource_8gbba"), SubResource("Resource_jjvhh"), SubResource("Resource_kry3j")])
 arrows = Dictionary[int, NodePath]({
@@ -169,18 +171,19 @@ texture = ExtResource("3_8gbba")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.49)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=895672297 node_paths=PackedStringArray("collider", "subviewport")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2360044, -0.28342295)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3825402, 2.0081584)
 script = ExtResource("4_jjvhh")
 collider = NodePath("CollisionShape3D")
 subviewport = NodePath("computer_screen/SubViewport")
 
 [node name="computer_screen" type="Sprite3D" parent="StaticBody3D" unique_id=1332076036]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.1388945, -0.055061832, 2.4960482)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 alpha_cut = 2
 texture = SubResource("ViewportTexture_qnpof")
 
 [node name="SubViewport" type="SubViewport" parent="StaticBody3D/computer_screen" unique_id=342199176]
 canvas_item_default_texture_filter = 0
+size = Vector2i(1920, 1080)
 
 [node name="Background" type="TextureRect" parent="StaticBody3D/computer_screen/SubViewport" unique_id=413163920]
 offset_right = 1000.0
@@ -195,7 +198,7 @@ offset_bottom = 51.0
 text = "this is a computer"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=575972048]
-transform = Transform3D(0.5, 0, 0, 0, 0.50000006, 0, 0, 0, 0.50000006, 0.1388945, -0.055061817, 2.2448554)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.006949663)
 shape = SubResource("BoxShape3D_qnpof")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=58736182]
@@ -208,6 +211,7 @@ anchors_preset = 0
 offset_top = -65.0
 offset_right = 40.0
 offset_bottom = -25.0
+mouse_filter = 2
 
 [node name="Background" type="TextureRect" parent="Dialog" unique_id=540850621]
 layout_mode = 0
@@ -216,6 +220,7 @@ offset_top = 377.0
 offset_right = 4957.0
 offset_bottom = 2383.6665
 scale = Vector2(0.15, 0.15)
+mouse_filter = 2
 texture = ExtResource("6_hptm8")
 
 [node name="Speaker" type="Label" parent="Dialog" unique_id=105020616]
@@ -290,7 +295,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_344ge")
 shape = SubResource("SphereShape3D_qnpof")
 
 [node name="CharacterSprite" type="Sprite3D" parent="." unique_id=892915685]
-transform = Transform3D(0.17, 0, 0, 0, 0.17, 0, 0, 0, 0.17, 0, 3.0536077, -0.18091929)
+transform = Transform3D(0.17, 0, 0, 0, 0.17, 0, 0, 0, 0.17, 0, 3.4386241, -0.18091929)
 texture = ExtResource("8_344ge")
 
 [node name="Character" type="Node" parent="." unique_id=103323203]
