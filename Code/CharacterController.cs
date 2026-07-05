@@ -40,7 +40,24 @@ public partial class CharacterController : Node
 	string activitiesLine;
 	string moneyLine;
 
+	[Export] NodePath speechLabel;
+	[Export] NodePath whereButton;
+	[Export] NodePath whoButton;
+	[Export] NodePath activitiesButton;
+	[Export] NodePath moneyButton;
+	string currentLine = "";
+	int characterIndex = 0;
+	float lineTimer = 0.0f;
+	float lineAnimationDelay = 0.03f;
+
 	Random random = new();
+
+	void changeSpeech(string speech)
+	{
+		currentLine = speech;
+		GetNode<Label>(speechLabel).Text = "";
+		characterIndex = 0;
+	}
 
 	void initCharacter()
 	{
@@ -116,6 +133,11 @@ public partial class CharacterController : Node
 				break;
 			}
 		}
+		GetNode<Button>(whereButton).Disabled = false;
+		GetNode<Button>(whoButton).Disabled = false;
+		GetNode<Button>(activitiesButton).Disabled = false;
+		GetNode<Button>(moneyButton).Disabled = false;
+		changeSpeech(introLine);
 	}
 
 	void readDialogFile(string fileName, List<Dialog> dialogList)
@@ -159,11 +181,39 @@ public partial class CharacterController : Node
 
 		selectThemes();
 		initCharacter();
-		Debug.WriteLine("Intro: " + introLine);
-		Debug.WriteLine("Where: " + whereLine);
-		Debug.WriteLine("who: " + whoLine);
-		Debug.WriteLine("Activities: " + activitiesLine);
-		Debug.WriteLine("Money: " + moneyLine);
+		//Debug.WriteLine("Intro: " + introLine);
+		//Debug.WriteLine("Where: " + whereLine);
+		//Debug.WriteLine("who: " + whoLine);
+		//Debug.WriteLine("Activities: " + activitiesLine);
+		//Debug.WriteLine("Money: " + moneyLine);
+		GetNode<Button>(whereButton).Pressed += WhereButtonPressed;
+		GetNode<Button>(whoButton).Pressed += WhoButtonPressed;
+		GetNode<Button>(activitiesButton).Pressed += ActivitiesButtonPressed;
+		GetNode<Button>(moneyButton).Pressed += MoneyButtonPressed;
+	}
+
+	void WhereButtonPressed()
+	{
+		changeSpeech(whereLine);
+		GetNode<Button>(whereButton).Disabled = true;
+	}
+
+	void WhoButtonPressed()
+	{
+		changeSpeech(whoLine);
+		GetNode<Button>(whoButton).Disabled = true;
+	}
+
+	void ActivitiesButtonPressed()
+	{
+		changeSpeech(activitiesLine);
+		GetNode<Button>(activitiesButton).Disabled = true;
+	}
+
+	void MoneyButtonPressed()
+	{
+		changeSpeech(moneyLine);
+		GetNode<Button>(moneyButton).Disabled = true;
 	}
 
 	void selectThemes()
@@ -195,8 +245,15 @@ public partial class CharacterController : Node
 		}
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		lineTimer += (float)delta;
+		while (lineTimer > lineAnimationDelay)
+		{
+			lineTimer -= lineAnimationDelay;
+			characterIndex++;
+			characterIndex = Math.Clamp(characterIndex, 0, currentLine.Length);
+			GetNode<Label>(speechLabel).Text = currentLine.Substr(0, characterIndex);
+		}
 	}
 }
