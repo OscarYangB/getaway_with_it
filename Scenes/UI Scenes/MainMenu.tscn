@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://pdl5pyu1rywx"]
+
+[ext_resource type="Script" uid="uid://clbbkviktx2q0" path="res://Scenes/UI Scenes/main_menu.gd" id="1_pqtna"]
+[ext_resource type="PackedScene" uid="uid://06adm5eb4it6" path="res://Scenes/UI Scenes/SoundButton.tscn" id="2_y7bq6"]
+[ext_resource type="PackedScene" uid="uid://7l6uukd6qtib" path="res://Meshes/Travel Agency Building.glb" id="3_y7bq6"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_tg3ej"]
+size = Vector2(1000, 1000)
+
+[sub_resource type="Gradient" id="Gradient_18jn2"]
+colors = PackedColorArray(0, 0, 0, 1, 0.18359044, 0.18359044, 0.18359044, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a37sx"]
+seed = 1655
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tg3ej"]
+width = 2048
+height = 2048
+noise = SubResource("FastNoiseLite_a37sx")
+color_ramp = SubResource("Gradient_18jn2")
+seamless = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_y7bq6"]
+width = 2048
+height = 2048
+noise = SubResource("FastNoiseLite_a37sx")
+seamless = true
+as_normal_map = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ltcvw"]
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("NoiseTexture2D_tg3ej")
+normal_enabled = true
+normal_scale = 3.65
+normal_texture = SubResource("NoiseTexture2D_y7bq6")
+uv1_scale = Vector3(216.585, 216.585, 216.585)
+
+[sub_resource type="Gradient" id="Gradient_13eva"]
+offsets = PackedFloat32Array(0.352459, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_l8ne1"]
+noise_type = 0
+seed = 660
+fractal_lacunarity = 2.015
+fractal_gain = 0.485
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qvpnb"]
+width = 1024
+height = 2048
+noise = SubResource("FastNoiseLite_l8ne1")
+color_ramp = SubResource("Gradient_13eva")
+seamless = true
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qvpnb"]
+sky_top_color = Color(0.14368936, 0.41224912, 0.70390105, 1)
+sky_horizon_color = Color(0.38408175, 0.46807623, 0.67587453, 1)
+sky_cover = SubResource("NoiseTexture2D_qvpnb")
+ground_bottom_color = Color(0.38408175, 0.46807623, 0.67587453, 1)
+ground_horizon_color = Color(0.38408175, 0.46807623, 0.67587453, 1)
+
+[sub_resource type="Sky" id="Sky_l8ne1"]
+sky_material = SubResource("ProceduralSkyMaterial_qvpnb")
+
+[sub_resource type="Environment" id="Environment_13eva"]
+background_mode = 2
+sky = SubResource("Sky_l8ne1")
+glow_enabled = true
+
+[node name="MainMenu" type="Node" unique_id=1235505317]
+process_mode = 3
+script = ExtResource("1_pqtna")
+
+[node name="Control" type="Control" parent="." unique_id=1917740747]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=1624897289]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 35.0
+offset_right = 184.0
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="StartButton" parent="Control/VBoxContainer" unique_id=1278998696 instance=ExtResource("2_y7bq6")]
+layout_mode = 2
+text = "START"
+
+[node name="SettingsButton" parent="Control/VBoxContainer" unique_id=249214895 instance=ExtResource("2_y7bq6")]
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="QuitButton" parent="Control/VBoxContainer" unique_id=1009383545 instance=ExtResource("2_y7bq6")]
+layout_mode = 2
+text = "QUIT"
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1081510629]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D" unique_id=1909730973]
+mesh = SubResource("PlaneMesh_tg3ej")
+surface_material_override/0 = SubResource("StandardMaterial3D_ltcvw")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Node3D" unique_id=1269064555]
+environment = SubResource("Environment_13eva")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D" unique_id=2052838809]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Travel Agency Building" parent="Node3D" unique_id=1348000829 instance=ExtResource("3_y7bq6")]
+
+[node name="Camera3D" type="Camera3D" parent="Node3D" unique_id=824207788]
+transform = Transform3D(-0.9177705, 0.07136415, 0.39064628, 0.02497741, 0.99214596, -0.12256641, -0.39632502, -0.102730505, -0.9123447, 13.268638, 3.2360482, -27.123545)
+
+[connection signal="pressed" from="Control/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
