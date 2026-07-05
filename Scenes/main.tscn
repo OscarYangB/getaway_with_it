@@ -35,7 +35,9 @@
 [ext_resource type="Texture2D" uid="uid://ce2ek42wjmmst" path="res://Textures/mafia_man.png" id="25_neg2b"]
 [ext_resource type="Texture2D" uid="uid://c8h35pro2lajv" path="res://Textures/sketch_man.png" id="26_r33sp"]
 [ext_resource type="FontFile" uid="uid://dn8elb5flp4xd" path="res://Fonts/CaveatBrush-Regular.ttf" id="29_r33sp"]
+[ext_resource type="Texture2D" uid="uid://ce2cbtykotufc" path="res://Textures/postcard_1.png" id="31_jwpg7"]
 [ext_resource type="Script" uid="uid://gghfrdarrq0x" path="res://Code/BellController.cs" id="31_kltya"]
+[ext_resource type="Texture2D" uid="uid://c6ihfjlxod136" path="res://Textures/postcard_2.png" id="32_k2e45"]
 
 [sub_resource type="Resource" id="Resource_jjgbg"]
 script = ExtResource("2_bo1nx")
@@ -131,6 +133,12 @@ stencil_outline_thickness = 0.053
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_2tu2c"]
 viewport_path = NodePath("BulletinBoard/ThemeList/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_k2e45"]
+viewport_path = NodePath("BulletinBoard/Postcard1/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_536cc"]
+viewport_path = NodePath("BulletinBoard/Postcard2/SubViewport")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_2tu2c"]
 radius = 0.385
@@ -515,6 +523,7 @@ moneyButton = NodePath("../Dialog/MoneyButton")
 themeLabel = NodePath("../BulletinBoard/ThemeList/SubViewport/Label")
 characterTextures = Array[Texture2D]([ExtResource("25_neg2b"), ExtResource("26_r33sp"), ExtResource("8_344ge")])
 sprite3D = NodePath("../CharacterSprite")
+postcards = Array[NodePath]([NodePath("../BulletinBoard/Postcard1"), NodePath("../BulletinBoard/Postcard2")])
 
 [node name="BulletinBoard" type="Sprite3D" parent="." unique_id=567186554]
 transform = Transform3D(-7.86805e-09, 0, -0.18, 0, 0.18, 0, 0.18, 0, -7.86805e-09, 5.729937, 3.2825854, 4.232732)
@@ -526,13 +535,13 @@ transform = Transform3D(2, 0, 6.3948846e-14, 0, 2, 0, -6.3948846e-14, 0, 2, 7.38
 texture = SubResource("ViewportTexture_2tu2c")
 
 [node name="SubViewport" type="SubViewport" parent="BulletinBoard/ThemeList" unique_id=2093437226]
-size = Vector2i(300, 400)
+size = Vector2i(400, 600)
 
 [node name="Paper" type="TextureRect" parent="BulletinBoard/ThemeList/SubViewport" unique_id=475889667]
 texture_filter = 4
 offset_right = 40.0
 offset_bottom = 40.0
-scale = Vector2(10, 10)
+scale = Vector2(10, 15.21)
 texture = ExtResource("12_6iyac")
 expand_mode = 1
 
@@ -543,10 +552,56 @@ offset_right = 157.96002
 offset_bottom = 56.705017
 theme_override_colors/font_color = Color(0.15727392, 0.15727395, 0.15727395, 1)
 theme_override_fonts/font = ExtResource("29_r33sp")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 50
 text = "testing testing"
 
 [node name="Pin" type="TextureRect" parent="BulletinBoard/ThemeList/SubViewport" unique_id=1675390211]
+offset_left = 120.0
+offset_top = 6.0
+offset_right = 373.00055
+offset_bottom = 217.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("13_fdnlq")
+
+[node name="Postcard1" type="Sprite3D" parent="BulletinBoard" unique_id=1589595876]
+transform = Transform3D(2, 0, 6.3948846e-14, 0, 2, 0, -6.3948846e-14, 0, 2, -1.790802, 5.7009964, 2.2882347)
+texture = SubResource("ViewportTexture_k2e45")
+
+[node name="SubViewport" type="SubViewport" parent="BulletinBoard/Postcard1" unique_id=1306757600]
+size = Vector2i(300, 400)
+
+[node name="Postcard" type="TextureRect" parent="BulletinBoard/Postcard1/SubViewport" unique_id=63236094]
+texture_filter = 4
+offset_right = 30.0
+offset_bottom = 40.0
+scale = Vector2(10, 10)
+texture = ExtResource("31_jwpg7")
+expand_mode = 1
+
+[node name="Pin" type="TextureRect" parent="BulletinBoard/Postcard1/SubViewport" unique_id=997386485]
+offset_left = 120.0
+offset_top = 6.0
+offset_right = 373.00055
+offset_bottom = 217.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("13_fdnlq")
+
+[node name="Postcard2" type="Sprite3D" parent="BulletinBoard" unique_id=1012614277]
+transform = Transform3D(2, 0, 6.3948846e-14, 0, 2, 0, -6.3948846e-14, 0, 2, -11.264488, -0.44288826, 1.3903713)
+texture = SubResource("ViewportTexture_536cc")
+
+[node name="SubViewport" type="SubViewport" parent="BulletinBoard/Postcard2" unique_id=2051350340]
+size = Vector2i(300, 400)
+
+[node name="Postcard" type="TextureRect" parent="BulletinBoard/Postcard2/SubViewport" unique_id=1551010472]
+texture_filter = 4
+offset_right = 30.0
+offset_bottom = 40.0
+scale = Vector2(10, 10)
+texture = ExtResource("32_k2e45")
+expand_mode = 1
+
+[node name="Pin" type="TextureRect" parent="BulletinBoard/Postcard2/SubViewport" unique_id=1193121666]
 offset_left = 120.0
 offset_top = 6.0
 offset_right = 373.00055
@@ -579,7 +634,6 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 shape = SubResource("SphereShape3D_2tu2c")
 
 [node name="FADE" type="ColorRect" parent="." unique_id=1114045065]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

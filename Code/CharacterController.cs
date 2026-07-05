@@ -59,6 +59,9 @@ public partial class CharacterController : Node
 
 	Random random = new();
 
+	int numberOfCharacters = 0;
+	[Export] Array<NodePath> postcards;
+
 	void changeSpeech(string speech)
 	{
 		currentLine = speech;
@@ -68,6 +71,7 @@ public partial class CharacterController : Node
 
 	public void initCharacter()
 	{
+		numberOfCharacters++;
 		isCriminal = random.Next(2) == 0 ? false : true;
 		bool shouldHaveThemedTag = isCriminal;
 		for (int i = 0; i < 10; i++)
@@ -146,6 +150,11 @@ public partial class CharacterController : Node
 		GetNode<Button>(moneyButton).Disabled = false;
 		changeSpeech(introLine);
 		GetNode<Sprite3D>(sprite3D).Texture = characterTextures[random.Next(characterTextures.Count)];
+
+		for (int i = 0; i < postcards.Count; i++)
+		{
+			GetNode<Sprite3D>(postcards[i]).Visible = numberOfCharacters > ((i + 1) * 3);
+		}
 	}
 
 	void readDialogFile(string fileName, List<Dialog> dialogList)
